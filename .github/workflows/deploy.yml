@@ -12,6 +12,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        ref: main
+        token: ${{ secrets.MKDOCS_PAT }}
 
     - name: Setup Python
       uses: actions/setup-python@v4
@@ -24,5 +27,3 @@ jobs:
 
     - name: Build and Deploy
       run: mkdocs gh-deploy --force
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
