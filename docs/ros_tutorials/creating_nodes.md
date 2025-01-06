@@ -10,9 +10,6 @@ But what do these commands do?  Well, catkin is the official build system of ROS
  rosrun <package> <node>
 ROS goes to the executable, not your c++ files and loads what the compiler made.  This means that whenever you make a change to any c++ file, ''you have to go and re-run catkin_make'', otherwise the changes will not make it to the executables.
 
-## Setting up Qt Creator
-When working with large c++ projects, simple text editors like vim or sublime really don't cut it.  Instead, we have IDE's (Integrated Development Environment).  You may have previously used Microsoft Visual Studio, which unfortunately doesn't work with Linux, but is a very powerful IDE.  Instead, we use Qt Creator, which has many of the same features, but runs in Ubuntu.  You can use Eclipse if you like, but Qt Creator can call catkin_make natively making it really simple to configure and run.  Follow this [guide](link) to set up Qt Creator for your workspace.
-
 ## Making Your Own Nodes
 These links will take you to the official ROS tutorials which are pretty good at covering this subject.
 

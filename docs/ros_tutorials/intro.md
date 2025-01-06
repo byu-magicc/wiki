@@ -2,7 +2,7 @@
 
 ## Why ROS?
 
-According to the [ROS website](www.ros.org/about-ros/), "The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms." Specifically, ROS simplifies the plumbing required to connect together the components of a robotic system, it provides tools for simulating and inspecting the behavior of the system, and it provides a common platform that enables the sharing of technologies and ideas.
+According to the [ROS website](https://www.ros.org/about-ros/), "The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms." Specifically, ROS simplifies the plumbing required to connect together the components of a robotic system, it provides tools for simulating and inspecting the behavior of the system, and it provides a common platform that enables the sharing of technologies and ideas.
 
 ### Plumbing
 
@@ -57,5 +57,4 @@ There are several variants of Linux, all of which have their own pros and cons. 
 
 Here are links to other pages that go through installing Ubuntu and ROS
 
-- [Installing Ubuntu](getting_started/installing_ubuntu_16.04.md)
 - [Installing ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu)

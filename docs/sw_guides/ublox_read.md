@@ -39,7 +39,7 @@ These communications happen over a serial port.
 
 ![](assets/UBXProtocol.png)
 
-*Taken from UBLOX Interface Description: See [Documentation and Citations](#UBLOX-Documentation-and-Citations)*
+*Taken from UBLOX Interface Description: See [Documentation and Citations](#ublox-documentation-and-citations)*
 
 ## RTCM (Radio Technical Commission for Maritime Services)
 
@@ -79,8 +79,8 @@ A single node corresponds to a single module. All nodes must specify
 Other *optional* parameters include
 1. `rover_host`/`rover_host1`: The IP address of the **Rover** computer.
 2. `rover_port`: The port number over which UDP communication will be received by the **Rover** computer.
-3. `base_host`: The IP address of the **Base** computer from which the local computer recevies [RTCM](#rtcm) correctional data.
-4. `base_port`: The port number of the **Base** computer from which the [RTCM](#rtcm) data was sent.
+3. `base_host`: The IP address of the **Base** computer from which the local computer recevies [RTCM](#rtcm-(Radio-Technical-Commission-for-Maritime-Services) correctional data.
+4. `base_port`: The port number of the **Base** computer from which the [RTCM](#rtcm-(Radio-Technical-Commission-for-Maritime-Services) data was sent.
 
 Tip: Theoretically N number of rovers can be initialized to a single base by counting up from rover_host1 to rover_hostN, rover_port1 to rover_portN, and any other given param.
 
@@ -130,11 +130,11 @@ Attention: Do not modify these launch files. Only use them as templates for crea
 
 
 ## ROS Messages
-* **[PosVelTime](#PosVelTime):** GNSS Positional/Velocity Data given in LLA format with an accurate timestamp
-* **[PosVelEcef](#PosVelEcef)** GNSS Positional Data given in ECEF frame. (Velocity is copied from PosVelTime message)
-* **[RelPos](#RelPos):** RTK Corrected Relative Position of the module relative to its base (only output on rover)
-* **[RelPosFlags](#RelPosFlags):** Flags from RelPos Message
-* **[SurveyStatus](#SurveyStatus):** Information about Survey-in Parameters including current mean position accuracy (only outputs for a stationary base)
+* **[PosVelTime](#posveltime):** GNSS Positional/Velocity Data given in LLA format with an accurate timestamp
+* **[PosVelEcef](#posvelecef)** GNSS Positional Data given in ECEF frame. (Velocity is copied from PosVelTime message)
+* **[RelPos](#relpos):** RTK Corrected Relative Position of the module relative to its base (only output on rover)
+* **[RelPosFlags](#relposflags):** Flags from RelPos Message
+* **[SurveyStatus](#surveystatus):** Information about Survey-in Parameters including current mean position accuracy (only outputs for a stationary base)
 
 ## PosVelTime
 GNSS Positional/Velocity Data given in LLA format with an accurate timestamp
@@ -196,7 +196,7 @@ RTK Corrected Relative Position of the module relative to its base (only output 
 |float64[3] | accNED 		| Accuracy of relative position North component (m)
 |float64 | accLength 		| Accuracy of Length of the relative position vector (m)
 |uint32 | accHeading 		| Accuracy of heading of the relative position vector (rad)
-|uint32 | flags 			|See [RelPosFlags](#RelPosFlags)
+|uint32 | flags 			|See [RelPosFlags](#relposflags)
 |float64[3] | arrowNED  |Difference vector from one rover to the other. (m)
 |float64 | arrowLength |Length of difference vector. (m)
 |float64[3] | arrowRPY |Roll/Pitch/Yaw from rover1 to rover2 (rad)
@@ -206,7 +206,7 @@ Flags from RelPos Message
 
 ![](assets/RelPosFlags.png)
 
-*Taken from UBLOX Interface Description: See [Documentation and Citations](#UBLOX-Documentation-and-Citations)*
+*Taken from UBLOX Interface Description: See [Documentation and Citations](#ublox-documentation-and-citations)*
 
 ## SurveyStatus
 Information about Survey-in Parameters including current mean position accuracy (only outputs for a stationary base)
@@ -270,7 +270,7 @@ Some keys function as wild cards that can mean more than one configuration.
 
 
 ## CfgValGet
-Access configuration settings on the ZED-F9P module via [UBX protocol](#UBX-(Ublox-Proprietary-Protocol))
+Access configuration settings on the ZED-F9P module via [UBX protocol](#ubx-(Ublox-Proprietary-Protocol)
     
 #### Request
 Template: `rosservice call /base/CfgValGet <layer> <position> <keyID> <filepath>` 
@@ -369,7 +369,7 @@ Template: `rosservice call /base/CfgReset <uint16 navBbrMask> <uint8_t resetMode
 
 ![](assets/navBbrMask.png)
 
-*Taken from UBLOX Interface Description: See [Documentation and Citations](#UBLOX-Documentation-and-Citations)*
+*Taken from UBLOX Interface Description: See [Documentation and Citations](#ublox-documentation-and-citations)*
 
 `<resetMode>`: Reset Type
 

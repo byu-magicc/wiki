@@ -31,7 +31,7 @@ So, make sure the battery gets a female connector. Likewise, the bullet connecto
 Attention!
 Never cut the postive and negative wires of the battery at the same time (e.g. when replacing a connector, whether it is the main battery lead or the cell voltage-tester-lead).
 
-Most connectors are labeled with a positive and negative sign on the appropriate sides, to avoid reverse polarization at the soldering stage. Be aware of which side of the connector to solder the black wire to (negative), and the red wire (positive). **If you realize you did it wrong by accident, start over. Do not purposefully solder a matching female connector to an ESC the wrong way, thinking you'll always remember that that battery and ESC must always go together. [Fires Will Happen](l01_lipo_batts.md#Moral_of_the_Story:). De-solder it and start over.**
+Most connectors are labeled with a positive and negative sign on the appropriate sides, to avoid reverse polarization at the soldering stage. Be aware of which side of the connector to solder the black wire to (negative), and the red wire (positive). **If you realize you did it wrong by accident, start over. Do not purposefully solder a matching female connector to an ESC the wrong way, thinking you'll always remember that that battery and ESC must always go together. [Fires Will Happen](#moral-of-the-story). De-solder it and start over.**
 
 * Some connector types (Anderson Powerpoles) are 'genderless.' This means that both sides of the connector are identical, or in other words, neither side has an exposed plug wire. Both are inside a housing, difficult to get accidentally electrically shocked if 'hot.' The MAGICC lab does not use these types of connectors (that I know of), so just get used to being careful and deliberate when soldering connectors. Even with 'genderless' connectors, **they are still polarized**, so make sure the red and black wires are soldered to the correct sides of the connector
 
@@ -78,7 +78,7 @@ Be absolutely certain the charge mode of the charger matches the type of cell yo
  * e.g.
    * A '25C' max discharge rate on a 5,000mAh battery means the battery is rated for a max discharge rate of 125A
    * A '1C' max charge rate on a 5,000mAh battery means the battery is rated to safely charge at 5A
-* Some battery specifications may advertise up to 5C or 10C charge rates, but **did you read the [MORAL OF THE STORY](l01_lipo_batts.md#Moral_of_the_Story:) above?** High charge rates can be dangerous, and can cause expensive-to-fix damage -- more than you can afford to cover -- hope you either have good insurance or alternate career plans...
+* Some battery specifications may advertise up to 5C or 10C charge rates, but **did you read the [MORAL OF THE STORY](#moral-of-the-story) above?** High charge rates can be dangerous, and can cause expensive-to-fix damage -- more than you can afford to cover -- hope you either have good insurance or alternate career plans...
 * In the MAGICC lab we only charge batteries at '1C' max, even though the batteries may have a higher advertised rating on its spec sheet
  * If you have the time, charge at '0.5C' (or lower) as it will be easier on the battery, and help prolong the life of the cell
  * High charge rates (and high discharge rates, for that matter) degrade cell quality more quickly, which causes otherwise unnecessary battery purchases with sacred funds provided to the lab

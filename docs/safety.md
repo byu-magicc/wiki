@@ -46,8 +46,8 @@ fire in the vicinity.
   - It zeroes out the voltage, ruining the battery
   - It is meant for battery disposal - we rarely need this
 
-[*Battery Basics*]: #!hw_guides/lipo_batts.md
-[*Battery Charging Guide*]: #!hw_guides/charging_lipo_batts.md
+[*Battery Basics*] (hw_guides/lipo_batts.md)
+[*Battery Charging Guide*] (hw_guides/charging_lipo_batts.md)
 
 ## Build Room ##
 

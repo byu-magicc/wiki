@@ -49,5 +49,5 @@ Note:
 1. You may now use your charged battery. Please do not drop it, as even dented cells are not worth the risk of burning down the building, or your vehicle. It is cheaper to replace a battery than the building, and batteries are cheaper and easier to replace than most vehicles
 
 <!-- links -->
-[Safety]: #!safety.md
+[Safety]: ../safety.md
 [Batteries]: lipo_batts.md

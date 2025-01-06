@@ -36,12 +36,12 @@ e.g.:
  * Polarized connectors: Many different brands exist, such as XT##, Dean's, EC#, Anderson Powerpole (APP##), etc. Find a properly sized/specced one for your amperage and power requirements. **Do not attempt to force nor accidentally connect polarized connectors into each other 'the wrong way.' Reverse polarization can destroy the ESC and/or the battery**
    * You'll see a lot of XT60 and Dean's in the MAGICC lab, with some XT90, depending on preference of the person who assembled the vehicle power system. Feel free to go with preference on connector type, as long as the size is large enough for the amperage of your system
 
-Following a scheme like this will avoid putting unnecessary wear and tear on system components, especially with the dangers of [over-heating Li-Po batteries](l01_lipo_batts.md#Moral_of_the_Story:). We would rather not have the lab vehicles burning up, and your mother would rather not have you burning up (and I don't mean sunburn, though I'm sure she'd rather not that, either).
+Following a scheme like this will avoid putting unnecessary wear and tear on system components, especially with the dangers of [over-heating Li-Po batteries](lipo_batts.md#moral-of-the-story). We would rather not have the lab vehicles burning up, and your mother would rather not have you burning up (and I don't mean sunburn, though I'm sure she'd rather not that, either).
 
 
 
 #### Note: ####
-The 15% upgrade in capability for each compoenent is not on the base power output, but is calculated as **compounding** on each component up the chain. Hence, the battery should be rated for **152A**, not just 145A. Likewise for the ESC, it is not 130A, but 132A. The difference may not be large, but safer is better when dealing with [Li-Po's](l01_lipo_batts.md#Moral_of_the_Story:). If you can, try to push the factor to 20% or more.
+The 15% upgrade in capability for each compoenent is not on the base power output, but is calculated as **compounding** on each component up the chain. Hence, the battery should be rated for **152A**, not just 145A. Likewise for the ESC, it is not 130A, but 132A. The difference may not be large, but safer is better when dealing with [Li-Po's](lipo_batts.md#moral-of-the-story). If you can, try to push the factor to 20% or more.
 
 
 ## Example ##

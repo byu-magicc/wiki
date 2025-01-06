@@ -19,7 +19,7 @@ This is a required CUDA-enabled library for GPU-accelerated TensorFlow and other
 
 ###### **OpenCV** ######
 
-The go-to open source computer vision library does have built-in CUDA-enabled code. For CUDA-enabled installation instructions, see [here](#!sw_guides/opencv.md).
+The go-to open source computer vision library does have built-in CUDA-enabled code. For CUDA-enabled installation instructions, see [here](../sw_guides/opencv.md).
 
 ###### **FFmpeg** ######
 

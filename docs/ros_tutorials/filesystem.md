@@ -80,7 +80,7 @@ If you have run some ROS program before, try:
 `roscd log`
 
 ### rosls
-[rosls]([https://wiki.ros.org/rosbash#rosls) is also part of the `rosbash` suite. It allows you to `ls` directly in a package by name rather than by absolute path.
+[rosls](https://wiki.ros.org/rosbash#rosls) is also part of the `rosbash` suite. It allows you to `ls` directly in a package by name rather than by absolute path.
 Usage:
 ```bash
  rosls [locationname[/subdir]]

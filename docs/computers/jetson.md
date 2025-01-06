@@ -21,7 +21,7 @@ A Tegra CPU-optimized closed-sourced version of OpenCV. It is not CUDA-enabled (
 
 #### CUDA-Enabled OpenCV ####
 
-See the installation instructions [here](#!sw_guides/opencv.md).
+See the installation instructions [here](../sw_guides/opencv.md).
 
 #### ROS Melodic ####
 
@@ -63,7 +63,7 @@ To use the Orbitty with the TX2, you will have to install COnnectTech Inc's (CTI
 
 To install CTI-L4T, you can follow the [instructions](https://connecttech.com/resource-center/kdb373/), or walk through the steps laid out in the next subsection. You can read through the flow on the instructions web-page, but we have extensively tested the steps in this document, so probably just follow them. The installation steps below have been completed successfully using an Ubuntu 18.04 x86_64 host machine. To then install CUDA and the other packages that JetPack normally installs on the target Jetson TX2, run the Nvidia SDKManager again. On the *STEP 01: Development Environment* screen, uncheck "Host Machine" and change "Target Hardware" to "Jetson TX2 (P3310)," or whatever your applicable hardware is. The next screen is *STEP 02: Details and License*. Under **Target Components**, uncheck **Jetson OS**. This will prevent JetPack from overwriting the BSP changes, while still allowing JetPack to actually push CTI-L4T and any other components (like CUDA) under the **Jetson SDK components** section over to the TX2 device.
 
-Some have asked why we uncheck "Host Machine". It just installs a bunch of software (CUDA, Computer Vision {opencv?}, & Developer Tools) that you probably do not need on your host machine. Their versions of CUDA and OpenCV probably are not the ones you want (see our versions: [CUDA](#!sw_guides/install_cuda.md), [OpenCV](#!sw_guides/opencv.md)), and I would venture to bet you are not developing for Nvidia. If you are still curious, Google what exact software and their versions are included. IMHO, if I do not need it to successfully install software on the TX2, I do not need their automated versions clogging up my host machine resources with background processes. and stomping on my own carefully installed versions of libraries.
+Some have asked why we uncheck "Host Machine". It just installs a bunch of software (CUDA, Computer Vision {opencv?}, & Developer Tools) that you probably do not need on your host machine. Their versions of CUDA and OpenCV probably are not the ones you want (see our versions: [CUDA](../sw_guides/install_cuda.md), [OpenCV](../sw_guides/opencv.md)), and I would venture to bet you are not developing for Nvidia. If you are still curious, Google what exact software and their versions are included. IMHO, if I do not need it to successfully install software on the TX2, I do not need their automated versions clogging up my host machine resources with background processes. and stomping on my own carefully installed versions of libraries.
 
 ## Instructions: Start to Finish ##
 
@@ -180,7 +180,7 @@ If you have the Jetson TX2 on a Developer Kit, you will need a T-10H Security To
     Note:
     If it fails, shut everything off, disconnect power, and boot everything back up, and try the SDKs again. It has happened once that I needed to re-flash the OS image a second time before the SDKs would successfully install.
 
-1. Make it "Headless" to save resources when flying. Follow the instructions [here](#!computers/headless.md).
+1. Make it "Headless" to save resources when flying. Follow the instructions [here](headless.md).
 
 1. You're all done!
 
@@ -288,7 +288,7 @@ $ sudo ./flash.sh -r -k APP jetson-tx2 mmcblk0p1
 
 Below are some guides to help you get started using the Intel Realsense D400 series cameras on the TX2. (Some of this may be out-of-date, likely targeting L4T 28.x.x and below):
 
- - First and foremost, our own wiki page: [Intel RealSense D400 Camera](#!hw_guides/intel_rs_d400.md#Intel_RealSense_D400_Camera)
+ - First and foremost, our own wiki page: [Intel RealSense D400 Camera](../hw_guides/intel_rs_d400.md)
  - [Intel RealSense Camera Installation – NVIDIA Jetson TX2](https://www.jetsonhacks.com/2017/03/26/intel-realsense-camera-installation-nvidia-jetson-tx2/)
  - [Github jetsonhacks/buildLibrealsense2TX](https://github.com/jetsonhacks/buildLibrealsense2TX)
  - [Intel RealSense Package for ROS on NVIDIA Jetson TX2](https://www.jetsonhacks.com/2017/03/29/intel-realsense-package-for-ros-on-nvidia-jetson-tx2/)

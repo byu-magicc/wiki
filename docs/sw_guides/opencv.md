@@ -64,7 +64,7 @@ If you need specific OpenCL features that are not provided by these packages, th
 	$ sudo update-alternatives --install /usr/bin/vtk vtk /usr/bin/vtk6 10
 	```
 
-Note: If you want to use the RealSense libraries with OpenCV, you need to first get the RealSense SDK from [Intel's RealSense GitHub](https://github.com/IntelRealSense/librealsense). For use with ROS, use [our wiki page](#!hw_guides/intel_rs_d400.md#Intel_RealSense_D400_Camera). Once the SDK is installed, add the following cmake flags between the `cmake` and the `..` at the end of the `cmake` command on the next step:
+Note: If you want to use the RealSense libraries with OpenCV, you need to first get the RealSense SDK from [Intel's RealSense GitHub](https://github.com/IntelRealSense/librealsense). For use with ROS, use [our wiki page](../hw_guides/intel_rs_d400.md). Once the SDK is installed, add the following cmake flags between the `cmake` and the `..` at the end of the `cmake` command on the next step:
 `-DWITH_LIBREALSENSE=On \`
 `-DLIBREALSENSE_INCLUDE_DIR=<fill this in> \`
 `-DLIBREALSENSE_LIBRARIES=<fill this in> \`

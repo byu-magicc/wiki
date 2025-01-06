@@ -7,7 +7,7 @@ Start roscore, turtlesim_node, turtle_teleop_key node, and rqt_graph.
 The `rostopic` tool allows you to get information about ROS **topics**.
 
 You can use the help option to get the available sub-commands for `rostopic`
- ```
+```
 rostopic -h
 ```
 ```
