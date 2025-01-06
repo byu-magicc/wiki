@@ -1,5 +1,13 @@
 # MAGICC Public Wiki
 
+Deployed website link: https://byu-magicc.github.io/wiki/
+
+This is the location of the public MAGICC lab wiki, a place to put any useful guides or information for future students and other labmembers. 
+There is also a [private wiki](https://github.com/byu-magicc/wiki-private) for more confidential information or anything that doesn't really need to be public.
+Please place all appropriate material in that repository instead of this one.
+
+This website is built with Material for MkDocs. The guide below describes how to get the website up and running on a local machine for easy editing. For more extensive documentation, visit the [official documentation](https://squidfunk.github.io/mkdocs-material/).
+
 ## Install mkdocs
 
 ``` bash
