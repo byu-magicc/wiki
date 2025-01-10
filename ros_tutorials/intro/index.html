@@ -1,0 +1,2702 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials and guides for the MAGICC lab">
+      
+      
+        <meta name="author" content="MAGICC lab members">
+      
+      
+        <link rel="canonical" href="https://byu-magicc.github.io/wiki/ros_tutorials/intro/">
+      
+      
+        <link rel="prev" href="../../safety/">
+      
+      
+        <link rel="next" href="../starting_nodes/">
+      
+      
+      <link rel="icon" href="../../assets/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lesson 1: Introduction to ROS - MAGICC Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-ros" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MAGICC Wiki" class="md-header__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAGICC Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lesson 1: Introduction to ROS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../safety/" class="md-tabs__link">
+        
+  
+    
+  
+  Safety
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  ROS Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gazebo_tutorials/overview/" class="md-tabs__link">
+          
+  
+  Gazebo Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../control_tutorials/overview/" class="md-tabs__link">
+          
+  
+  Control Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/pixhawk/" class="md-tabs__link">
+          
+  
+  Hardware Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sw_guides/ceres_solver/" class="md-tabs__link">
+          
+  
+  Software Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../administration/new_member_tips/" class="md-tabs__link">
+          
+  
+  Administration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/systemd/" class="md-tabs__link">
+          
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MAGICC Wiki" class="md-nav__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    MAGICC Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../safety/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safety
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ROS Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ROS Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why ROS?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why ROS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plumbing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plumbing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rqt_graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rqt_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_plot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rosbag" class="md-nav__link">
+    <span class="md-ellipsis">
+      rosbag
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rosbag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rqt_bag" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_bag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tf" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      rviz
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS Versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-mint-elementary-os-and-other-distros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux Mint, Elementary OS and other distros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-linux-and-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Linux and ROS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starting_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 2: Starting Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node_info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 3: Getting Info About Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/turtlesim_assignment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 1: Turtlesim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 4: The ROS Filesystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../launch_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 5: Launch Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/creating_launch_file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 2: Creating Your Own Launch File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rostopic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 6: rostopic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/nodes_topics_and_messages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 3: Nodes, Topics, and Messages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic_remapping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 7: Topic Remapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 8: Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adv_launch_file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 9: Additional Launch File Syntax
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/launch_file_advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 4: Advanced Launch File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creating_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 10: Creating Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 11: Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/edit_node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 5: Editing Teleop Twist Joy Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B_node_class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 12a: Nodes Based on Classes (C++)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_node_class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 12b: Nodes Based on Classes (Python)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/draw_a_star/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 6: Drawing a Star
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/fuel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 7: Display/Publish Fuel Remaining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/out_of_fuel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 8: Stop Turtlesim When Fuel Runs Out
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gazebo Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gazebo Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_robot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 1: Make a Robot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 2: Adding Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_multirotor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 1: Make a Multirotor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_fixed_wing_mav/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 2: Make a Fixed Wing MAV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/interfacing_with_gazebo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 3: Interfacing with Gazebo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/flying_your_mav/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 3: Flying Your MAV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_world/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 4: Make a World
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_your_own_world/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 4: Make Your Own World
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_an_image_to_the_ground_plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 5: Adding an Image to the Ground Plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Control Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Control Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/p_controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 1: P Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/p_turtle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 0: P Controller with TurtleSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pd_controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 2: PD Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pd_turtle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 1: PD Controller with TurtleSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pid_controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson 3: PID Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pid_turtle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment 2: PID Controller with TurtleSim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/pixhawk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pixhawk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/jetson/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/rospberry_pi_zero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Zero W
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA and GPGPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ubiquiti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ubiquiti
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ublox_f9p/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTK GPS: ZED-F9P
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/c94_m8p/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RTK GPS: C94-M8P
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/asus_xtion_pro_live/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASUS Xtion Pro Live
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/intel_rs_d400/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel RealSense D4xx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/lipo_batts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lithium-Polymer Batteries (Li-Po)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/charging_lipo_batts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Battery Charger Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/design_propulsion_system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Designing a Propulsion System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ceres_solver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro to Ceres Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/install_cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing CUDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/opencv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenCV with CUDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Know-how
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/mocap_room_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocap Room Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ublox_read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UBLOX_read Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Airsim Quickstart Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Airsim Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/vtol_airsim_qs_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VTOL AirSim Quickstart Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/new_member_tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    New Lab-member Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/conference_room_schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conference Room Schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/systemd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Startup Scripts with systemd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/headless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Headless vs Graphical Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/caedm_integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CAEDM Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/debugging_ros_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging ROS Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/env_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/qt_creator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qt Creator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/ros_command_cheat_sheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS Command Cheat Sheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/setting_up_ssh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/syncing_time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Syncing Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/vpn_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPN Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why ROS?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why ROS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plumbing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plumbing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rqt_graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rqt_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_plot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rosbag" class="md-nav__link">
+    <span class="md-ellipsis">
+      rosbag
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rosbag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rqt_bag" class="md-nav__link">
+    <span class="md-ellipsis">
+      rqt_bag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tf" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      rviz
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS Versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-mint-elementary-os-and-other-distros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux Mint, Elementary OS and other distros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-linux-and-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Linux and ROS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/byu-magicc/wiki/edit/main/docs/ros_tutorials/intro.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="introduction-to-ros">Introduction to ROS<a class="headerlink" href="#introduction-to-ros" title="Permanent link">&para;</a></h1>
+<h2 id="why-ros">Why ROS?<a class="headerlink" href="#why-ros" title="Permanent link">&para;</a></h2>
+<p>According to the <a href="https://www.ros.org/about-ros/">ROS website</a>, "The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms." Specifically, ROS simplifies the plumbing required to connect together the components of a robotic system, it provides tools for simulating and inspecting the behavior of the system, and it provides a common platform that enables the sharing of technologies and ideas.</p>
+<h3 id="plumbing">Plumbing<a class="headerlink" href="#plumbing" title="Permanent link">&para;</a></h3>
+<p>One of the challenges of developing a robotic system is developing the "plumbing" to connect data from all of the different subsystems together. Consider, for example the requirements for a robot that, using an altimeter, Xbox Kinect, and IMU, can safely drive through a room making a map as it goes. A graph of the components of this system is depicted below, the arrows indicate the flow of data from one component to another.</p>
+<p><img alt="Example Robotic System" src="../figures/intro/exampleSystem.png" /></p>
+<p>Starting from scratch, much of the development time (and frustration) on a system like this would be spent figuring out how to get data from one subsystem to another. If you aren't careful, the result could be very brittle, requiring extensive rework if a component is changed, or if system requirements change. To solve these issues you could spend hours creating a modular system for message passing, or you could use ROS. ROS was developed to solve problems such as this. It enables high modularity by creating standalone nodes that can be easily reused and that have well defined data interfaces. These interfaces are known as topics. Below is a figure depicting the example system from above as a set of ROS <em>nodes</em> (blue boxes), communicating with each other through messages known as <em>topics</em> (green arrows).</p>
+<p><img alt="Example as a ROS system" src="../figures/intro/system1ROSLabeled.png" /></p>
+<p>A couple of things to note from this example. Every message "input" on a node is referred to as a subscriber, and every message "output" is known as a publisher. There can only be one publisher for a topic, but there can be many subscribers - note how the estimator and the map nodes both subscribe to the data from the kinect.</p>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<p>ROS provides many helpful tools for debugging and inspecting the behavior of a system. This is a brief overview of some of the most useful, for details on how to use them, see the other tutorials, and google.</p>
+<h4 id="rqt_graph">rqt_graph<a class="headerlink" href="#rqt_graph" title="Permanent link">&para;</a></h4>
+<p>rqt_graph gives a graphical representation of the currently active nodes and topics, allowing you to see what nodes are subscribing to, and to make sure that everything is connected the way you intended.
+<img alt="Example of rqt_graph" src="../figures/intro/rqt_graphDemo.png" /></p>
+<h4 id="rqt_plot">rqt_plot<a class="headerlink" href="#rqt_plot" title="Permanent link">&para;</a></h4>
+<p>rqt_plot will subscribe to topics and plot their data over time.
+<img alt="Example of rqt_plot" src="../figures/intro/rqt_plotDemo.png" /></p>
+<h4 id="rosbag">rosbag<a class="headerlink" href="#rosbag" title="Permanent link">&para;</a></h4>
+<p>The rosbag command allows you to record all of the data that is being published, and save it into a file known as a rosbag. This file can then be replayed as if the system were currently running, or examined using rqt_bag.
+<img alt="Example of rosbag record" src="../figures/intro/rosbagRecord.png" />
+<img alt="Example of rosbag play" src="../figures/intro/rosbagPlay.png" /></p>
+<h5 id="rqt_bag">rqt_bag<a class="headerlink" href="#rqt_bag" title="Permanent link">&para;</a></h5>
+<p>rqt_bag reads a rosbag and provides a nice gui for interacting with it. It shows a graph of when messages were published, and it can plot data from specific messages.
+<img alt="Example of rqt_bag" src="../figures/intro/rqt_bagDemo.png" /></p>
+<h4 id="tf">tf<a class="headerlink" href="#tf" title="Permanent link">&para;</a></h4>
+<p>tf keeps track of coordinate frames and transformations, doing the kinematics for you.
+<img alt="Example of tf" src="../figures/intro/tfDemo.png" /></p>
+<h4 id="rviz">rviz<a class="headerlink" href="#rviz" title="Permanent link">&para;</a></h4>
+<p>rviz provides a visualization environment for visualizing coordinate frames, point clouds, paths, goals, models, etc.
+<img alt="Example of rviz" src="../figures/intro/rvizDemo.png" /></p>
+<p>This overview was based on a powerpoint by Paul Nyholm and David Wheeler: <a href="https://docs.google.com/presentation/d/1qsfSCJSmvBuR3nP3ah90LNJuTdCqxITZBdDG7mQyiS8/edit?usp=sharing">ROS Tutorial PowerPoint</a></p>
+<h2 id="ros-versions">ROS Versions<a class="headerlink" href="#ros-versions" title="Permanent link">&para;</a></h2>
+<p>A new version of ROS is released every year.  Every two years, a Long-Term Support (LTS) version is released.  The LTS version released in 2016 was ROS kinetic, a new version was released in 2017, called Lunar, but Lunar is not LTS, meaning that support for that distribution (distro) will end in April 2018.  Updating ROS distributions can be pretty time-consuming, so to avoid frequent updates, we generally use only the LTS versions of ROS.  As of this writing, we are using kinetic.  <em>Don't install Luanr</em>.  It will get confusing to everyone if you install Lunar and your code has weird bugs.</p>
+<p>Ubuntu has a similar release schedule, but it is released every 6 months.  Ubuntu 16.04 LTS (April, 2016) Xenial Xerus is the current LTS version that we use, soon to be replaced by Ubuntu 18.04 (April, 2018).  There have been several Ubuntus released since 16.04.  Namely 16.10, 17.04, and 17.10.  (the first two digits are the year, the last two are the month).  Just like ROS, we use 16.04.  It may be tempting to try the latest distribution, but ROS doesn't always support other releases besides the LTS.  To be safe, just stick with the LTS versions.</p>
+<h2 id="linux-mint-elementary-os-and-other-distros">Linux Mint, Elementary OS and other distros<a class="headerlink" href="#linux-mint-elementary-os-and-other-distros" title="Permanent link">&para;</a></h2>
+<p>There are several variants of Linux, all of which have their own pros and cons.  Theoretically, since many of these distros are based on Debian (which is what Ubuntu is based on), and many of them are based directly on Ubuntu, they will be compatible with ROS.  If you're just getting started, I would not recommend using one of these distros to develop ROS with.  They are kinda fun to toy around with, but don't expect everything to work well, because not all Linux distros are created equal.  Last I checked, Linux Mint was based on Ubuntu 15.10 or something, and Elementary OS is based on 15.10 too, which means only Jade is supported, but don't take my word for it.</p>
+<h2 id="installing-linux-and-ros">Installing Linux and ROS<a class="headerlink" href="#installing-linux-and-ros" title="Permanent link">&para;</a></h2>
+<p>Here are links to other pages that go through installing Ubuntu and ROS</p>
+<ul>
+<li><a href="https://wiki.ros.org/kinetic/Installation/Ubuntu">Installing ROS Kinetic</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
