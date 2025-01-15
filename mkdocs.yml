@@ -107,6 +107,7 @@ nav:
       - Airsim Settings: sw_guides/airsim_settings.md
       - VTOL AirSim Quickstart Guide: sw_guides/vtol_airsim_qs_guide.md
   - Administration:
+      - Getting Started with Research: administration/getting_started_in_research.md
       - New Lab-member Tips: administration/new_member_tips.md
       - Conference Room Schedule: administration/conference_room_schedule.md
   - Misc:
