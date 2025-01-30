@@ -11,7 +11,7 @@ This website is built with Material for MkDocs. The guide below describes how to
 ## Install mkdocs
 
 ``` bash
-pip install mkdocs-material
+pip install -r requirements.txt
 ```
 
 ## Run the mkdocs Server
