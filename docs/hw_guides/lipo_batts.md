@@ -45,14 +45,14 @@ Most connectors are labeled with a positive and negative sign on the appropriate
 * Batteries have nominal charge of 3.7V/cell
 * **WITH NO LOAD, BATTERY SHOULD NOT BE DISCHARGED BELOW THIS!**
 * **IF IT IS, RECHARGE BATTERIES IMMEDIATELY.**
- * e.g.
-   * 3S is 11.1V nominally
-   * 4S is 14.8V nominally
+  * e.g.
+    * 3S is 11.1V nominally
+    * 4S is 14.8V nominally
 
 * Batteries when fully charged are 4.2V/cell
- * e.g.
-   * 3S is 12.6V fully charged
-   * 4S is 16.8V fully charged
+  * e.g.
+    * 3S is 12.6V fully charged
+    * 4S is 16.8V fully charged
 * Cells should be stored between 3.75 and 3.85 V
    * Storage meaning anything longer than a day
 
@@ -75,16 +75,16 @@ Be absolutely certain the charge mode of the charger matches the type of cell yo
 
 * Capacity is measured in milli-amp hours (mAh)
 * The 'C' rating is just a multiple of battery capacity
- * e.g.
-   * A '25C' max discharge rate on a 5,000mAh battery means the battery is rated for a max discharge rate of 125A
-   * A '1C' max charge rate on a 5,000mAh battery means the battery is rated to safely charge at 5A
+  * e.g.
+    * A '25C' max discharge rate on a 5,000mAh battery means the battery is rated for a max discharge rate of 125A
+    * A '1C' max charge rate on a 5,000mAh battery means the battery is rated to safely charge at 5A
 * Some battery specifications may advertise up to 5C or 10C charge rates, but **did you read the [MORAL OF THE STORY](#moral-of-the-story) above?** High charge rates can be dangerous, and can cause expensive-to-fix damage -- more than you can afford to cover -- hope you either have good insurance or alternate career plans...
 * In the MAGICC lab we only charge batteries at '1C' max, even though the batteries may have a higher advertised rating on its spec sheet
- * If you have the time, charge at '0.5C' (or lower) as it will be easier on the battery, and help prolong the life of the cell
- * High charge rates (and high discharge rates, for that matter) degrade cell quality more quickly, which causes otherwise unnecessary battery purchases with sacred funds provided to the lab
- * The degradation level of the cells can most easily be seen by the 'puffiness' of the cells
- * e.g.
-   * A 5,000mAh battery is charged at 5A **maximum**
+  * If you have the time, charge at '0.5C' (or lower) as it will be easier on the battery, and help prolong the life of the cell
+  * High charge rates (and high discharge rates, for that matter) degrade cell quality more quickly, which causes otherwise unnecessary battery purchases with sacred funds provided to the lab
+  * The degradation level of the cells can most easily be seen by the 'puffiness' of the cells
+  * e.g.
+    * A 5,000mAh battery is charged at 5A **maximum**
 
 <!-- links -->
 [Battery Charger User Guide]: charging_lipo_batts.md
