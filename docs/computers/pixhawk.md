@@ -2,6 +2,8 @@
 
 This page describes how to set up a Pixhawk autopilot for hardware research purposes in the lab.
 
+In addition to this page, there is also an excellent guide written by a former lab member [here](assets/px4_intro.pdf).
+
 ## Pixhawk Hardware
 
 The original Pixhawk hardware was open-source, and since then, many flavors of Pixhawk hardware have become available on the market. In the lab we have experience using the original 3DR Pixhawk (no longer manufactured), and the Pixhawk 2.1/The Cube (this is the hardware we currently recommend). Full lists of supported hardware for both PX4 and APM firmware versions can be found [here](https://docs.px4.io/master/en/flight_controller/) and [here](https://ardupilot.org/copter/docs/common-autopilots.html).
