@@ -1,5 +1,7 @@
 # Overview of Control Systems
 
+These are basic tutorials for controlling a system. If you want to learn about estimating a system's state, check out this tutorial: [https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python)
+
 ## PID Control
 The technique of PID control is used both in the lab, and widely in industrial control systems. It's probably the simplest and oldest form of control and is found in your car's cruise control, almost all of the autopilots we use in the lab, and tons of other places. PID controls is named because of the 3 parts of the algorithm:
 
