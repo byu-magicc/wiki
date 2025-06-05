@@ -64,6 +64,35 @@ nav:
       - "Assignment 6: Drawing a Star": ros_tutorials/assignments/draw_a_star.md
       - "Assignment 7: Display/Publish Fuel Remaining": ros_tutorials/assignments/fuel.md
       - "Assignment 8: Stop Turtlesim When Fuel Runs Out": ros_tutorials/assignments/out_of_fuel.md
+  - ROS2 Tutorials:
+      - "Lesson 1: Introduction to ROS2": ros2_tutorials/intro.md
+      - "Lesson 2: Starting Nodes": ros2_tutorials/starting_nodes.md
+      - "Lesson 3: Getting Info About Nodes": ros2_tutorials/node_info.md
+      - "Assignment 1: Running Nodes: Listener and Talker": ros2_tutorials/assignments/1_L1-3_node_running.md
+      - "Assignment 2: Turtlesim Assignment": ros2_tutorials/assignments/2_L1-3_turtlesim.md
+      - "Lesson 4: The ROS Filesystem": ros2_tutorials/filesystem.md
+      - "Lesson 5: Launch Files": ros2_tutorials/launch_files.md
+      - "Assignment 3: Launch Files": ros2_tutorials/assignments/3_L4-5_creating_launch_file.md
+      - "Assignment 4: Launch Files": ros2_tutorials/assignments/4_L4-5_explaining_launch_file.md
+      - "Lesson 6: ROS2 Topics": ros2_tutorials/rostopic.md
+      - "Assignment 5: Nodes, Topics and Messages": ros2_tutorials/assignments/5_L6_nodes_topics_and_messages.md
+      - "Lesson 7: Topic Remapping": ros2_tutorials/topic_remapping.md
+      - "Lesson 8: ROS2 Parameters": ros2_tutorials/parameters.md
+      - "Lesson 9: Additional Launch File Syntax": ros2_tutorials/adv_launch_file.md
+      - "Assignment 6: More Launch File Practice 1": ros2_tutorials/assignments/6_L7-9_more_launch_file1.md
+      - "Assignment 7: More Launch File Practice 2": ros2_tutorials/assignments/7_L7-9_more_launch_file2.md
+      - "Assignment 8: Creating a Launch File with Parameters and Topic Remapping": ros2_tutorials/assignments/8_L7-9_launch_file_advanced.md
+      - "Assignment 9: diting Teleop Twist Joy Node": ros2_tutorials/assignments/9_L7-L9_edit_node.md
+      - "Lesson 10: Creating Nodes": ros2_tutorials/creating_nodes.md
+      - "Lesson 11: Packages": ros2_tutorials/packages.md
+      - "Lesson 12a: Nodes Based on Classes (C++)": ros2_tutorials/c++_node_class.md
+      - "Lesson 12b: Nodes Based on Classes (Python)": ros2_tutorials/python_node_class.md
+      - "Assignment 10: Draw a Star": ros2_tutorials/assignments/10_L10-12_draw_a_star.md
+      - "Assignment 11: Display/Publish Fuel Remaining": ros2_tutorials/assignments/11_L10-12_fuel.md
+      - "Assignment 12: Stop Turtlesim When Fuel Runs Out": ros2_tutorials/assignments/12_L10-12_out_of_fuel.md
+      - "Lesson 13: ROS2 on Multiple Machines": ros2_tutorials/multiple_machines.md
+      - "Lesson 14: Others": ros2_tutorials/others.md
+      - "Lesson 15: Motion Capture Tutorial": ros2_tutorials/mocap/mocap_tutorial.md
   - Gazebo Tutorials:
       - "Lesson 0: Overview": gazebo_tutorials/overview.md
       - "Lesson 1: Make a Robot": gazebo_tutorials/make_a_robot.md

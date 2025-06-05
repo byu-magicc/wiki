@@ -1,8 +1,8 @@
 # Additional Launch File Syntax
 
 ## Topic Remapping in Launch Files
-When we first learned about launch files we had to do some topic remapping in order to get mimic to work properly. The code is repeated here:
 
+When we first learned about launch files we had to do some topic remapping in order to get mimic to work properly. The code is repeated here:
 
  ``` xml
  <launch>
@@ -23,7 +23,8 @@ When we first learned about launch files we had to do some topic remapping in or
  </launch>
 ```
 
-The syntax above can be used whenever topic remapping is required within launch files. Notice that the syntax above places the remapping inside the node which starts on line 11 and ends on line 14.
+The syntax above can be used whenever topic remapping is required within launch files. Notice that the syntax above places the remapping inside the node `mimic`.
+
 
 The syntax below is also used often but don't be confused because in this case the remapping is done outside of the node argument. When using this syntax, the remapping must be called before the node it acts on, or else it won't take effect. This is true for remapping topics and node names.
 
@@ -35,6 +36,7 @@ The syntax below is also used often but don't be confused because in this case t
 </group>
 
 ```
+
 
 ## Loading Parameters in Launch Files
 
@@ -76,8 +78,7 @@ In the MAGICC Lab we generally use the following format for setting parameters w
 ```
 
 In a launch file the above code format results in the following parameters once 'rosparam list' is run.
-
-``` bash
+```
  /fabmap/SelfMatchWindow
  /fabmap/clTree
  /fabmap/trainbows
@@ -117,7 +118,9 @@ In a launch file the above code format results in the following parameters once 
 
 As you can see the parameters are neatly organized into namespaces corresponding to the node which they modify.
 
+
 ### YAML Files
+
 Previously using 'rosparam dump' we created a YAML file which stored parameter values for us.  We can also create this file manually.  We just need to create a file with the .yaml extension which holds all our parameter information.  An example is the following which is contained within ps2.yaml:
 
 
@@ -146,4 +149,4 @@ In order to load a .yaml file within a launch file the following syntax is used:
 <rosparam command="load" file="$(find rosparam)/example.yaml"/>
 ```
 
-For additional information about launch file format consult the documentation: https://wiki.ros.org/roslaunch/XML
+For additional information about the launch file format, consult the documentation: https://wiki.ros.org/roslaunch/XML
