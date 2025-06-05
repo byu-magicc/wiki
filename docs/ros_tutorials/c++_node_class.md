@@ -3,7 +3,7 @@
 
 # Classes
 
-If you have taken ME 235 and/or CS 142, you'll remember C++ classes.  If you haven't taken either of those, or you have and you're totally lost, then you should probably brush up on your C++.  [This](https://www.cplusplus.com/doc/tutorial/) is a pretty good tutorial that should help you get up to speed on C++ programming.
+If you have taken CS 142, you'll remember C++ classes.  If you haven't taken either of those, or you have and you're totally lost, then you should probably brush up on your C++.  [This](https://www.cplusplus.com/doc/tutorial/) is a pretty good tutorial that should help you get up to speed on C++ programming.
 
 In short, we use classes because they are convenient.  They may not seem so convenient at first, but being able to split up your code into different files makes it a lot easier, and classes make it easy to store variables in between function calls, and limit the scope of functions.  You could just program every node in one giant main cpp file, but that eventually becomes unreasonable.
 
@@ -33,7 +33,9 @@ moving_sensor
 │   └── moving_sensor_node.cpp
 ```
 
+
 ### CMakeLists.txt
+
 Let's look at the `CMakeLists.txt` of this package.  I've highlighted what each line does in this file below
 
 ``` CMake
@@ -69,7 +71,9 @@ target_link_libraries(moving_sensor_node # This links up the node with the compi
 )
 ```
 
+
 ### package.xml
+
 Let's look now at the `package.xml`.  This file is by far the easiest of the bunch it's pretty much self-explanatory
 
 ``` xml
@@ -95,7 +99,9 @@ Let's look now at the `package.xml`.  This file is by far the easiest of the bun
 </package>
 ```
 
+
 ### moving_sensor.h
+
 ``` C++
 #ifndef MOVING_SENSOR_H
 #define MOVING_SENSOR_H
@@ -153,7 +159,9 @@ private:
 #endif // movingSensor_H
 ```
 
+
 ### moving_sensor.cpp
+
 ``` C++
 #include "moving_sensor/moving_sensor.h"
 
@@ -200,7 +208,9 @@ void movingSensor::poseCallback(const turtlesim::PoseConstPtr &msg)
 } // namespace moving_sensor
 ```
 
+
 ### moving_sensor_node.cpp
+
 ``` C++
 #include <ros/ros.h>
 #include "moving_sensor/moving_sensor.h"
