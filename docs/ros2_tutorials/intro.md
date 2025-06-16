@@ -89,7 +89,7 @@ PlotJuggler is a "Fast, intuitive and extensible time series visualization tool"
 
 [Website Link](https://plotjuggler.io/)
 
-This overview was based on a [powerpoint]((https://docs.google.com/presentation/d/1qsfSCJSmvBuR3nP3ah90LNJuTdCqxITZBdDG7mQyiS8/edit?usp=sharing)) by Paul Nyholm and David Wheeler.
+This overview was based on a [powerpoint](https://docs.google.com/presentation/d/1qsfSCJSmvBuR3nP3ah90LNJuTdCqxITZBdDG7mQyiS8/edit?usp=sharing) by Paul Nyholm and David Wheeler.
 
 
 
