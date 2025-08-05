@@ -6,13 +6,20 @@ Attention! Please research responsibly.
 
 Note: **MAGICC Safety** is an individual __*and*__ a community responsibility.
 
-## General Guidelines ##
+## General Overview ##
 
 - Be up to date on your department training
 - If you get a feeling like something could go wrong, change the environment
-  - Your agency was given to you to bless your own life and the lives of the people around you - you have the power to change the situation
-- Do not sniff the expo markers
-- Follow COVID restrictions (wear a mask and social distance as needed)
+- Be careful with UAV propellors as brushless motors are powerfull and those blades will easily cut you if you let them
+- Be very careful with using and charging batteries: misuse could easily lead to electrocution, serious burns or a fire in the lab
+- Wear safety glasses anytime you are near flying UAVs
+- Check FAA restrictions before flying outdoors and always use a Part 107 certified safety pilot
+
+## UAV Safety ##
+
+- Never configure a flight controller with the ESCs powered on and with the propellers attached to the motors
+  - If you've plugging your flight controller into a computer, either make sure the ESCs do not have power or that the propellors have been removed
+  - We have had multiple incedents where motors turned on uncontrollably during what seemed like harmless configuration; don't assume what you're doing will be OK
 
 ## Battery Safety ##
 
@@ -29,17 +36,16 @@ fire in the vicinity.
   - This could ruin the battery
   - This could kill you 😵
 - Do **NOT** leave a charging battery unattended
-  - Attended means you are physically present in the room with your shoe on the (closed) charging tray lid
+  - Attended means you are physically present in the room
   - Definitely do _NOT_ leave a battery charging/discharging over night or even while you go to class
   - If you need to leave, you must get someone else present in the lab to take full responsibility for you
 - Do **NOT** leave a discharging battery unattended
 - Do **NOT** leave a battery plugged into any device unattended
   - This means both the cell voltage wires and the main power line should be unplugged from everything
 - Close the lid of the metal charging tray case while your battery is connected to the charger
-  - Leave your shoe on top of the closed case
+  - Place one of the orange rocks in your pocket
 - Last person to leave the lab:
   - Check if any of the charge cases are closed and, if so, disconnect all batteries and open the cases
-  - Take the person's shoe home with you
 - If the battery will sit dormant for more than 2 or 3 days, place the battery cell voltages at storage voltage (see [*Battery Basics*])
 - Store batteries either in metal ammo boxes or in li-po battery bags
 - Do not use the "discharge" function of the charger
