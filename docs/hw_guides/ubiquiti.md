@@ -92,7 +92,7 @@ In the lab, we typically strip down the bullet in order to reduce its size.
 
 23. Update the MAGICC Hardware Inventory on the private wiki page under Inventory and Standard HW to include the new bullet, its MAC address, the project it falls under, and the date acquired.
 
-24. Upload the bullet1.cfg configuration file to this [repo](https://gitlab.magiccvs.byu.edu/lab/ubiquiti_configs) under the folder bullet_configs. Edit the file ownership.txt to include your new bullet.
+24. Upload the bullet1.cfg configuration file to the Ubiquiti_configs repo under the folder bullet_configs. Edit the file ownership.txt to include your new bullet.
 
 ## Using a Bullet/Rocket Combination ##
 Avoid turning on any additional rockets within the lab. Doing so may adversely affect the lab's primary bullet near the MOCAP room.

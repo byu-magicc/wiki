@@ -10,8 +10,8 @@ Note:
 **MAGICC Safety** is an individual __*and*__ a community responsibility. There is __nothing__ *magic* about it.
 
 
-1. Read the MAGICC Lab Wiki page on [Safety]: __wiki.magiccvs.byu.edu/#!safety.md__
-1. Read the MAGICC Lab Wiki page on [Batteries]: __wiki.magiccvs.byu.edu/#!hw_guides/lipo_batts.md__
+1. Read the MAGICC Lab Wiki page on [Safety]: __magicc.byu.edu/wiki/safety__
+1. Read the MAGICC Lab Wiki page on [Batteries]: __magicc.byu.edu/wiki/hw_guides/lipo_batts__
 1. Internalize the Safety page - etch it onto your brainstem
 1. Internalize the Battery page - etch it onto your frontal lobe
 1. Place your battery in a metal case atop the charging cases

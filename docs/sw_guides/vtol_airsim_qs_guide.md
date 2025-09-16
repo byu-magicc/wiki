@@ -1,6 +1,6 @@
 # VTOL AirSim Quickstart Guide
 
-This guide is for running a simulation of a tiltrotor VTOL vehicle inside a prebuilt binary of the CityBlocks world - a custom world modified for AirSim by the MAGICC Lab. The driving script, complete with trajectory generation, controllers, and an AirSim client, is [`geometric_control_airsim_sim.py`](https://gitlab.magiccvs.byu.edu/urbanmobility/vtolsim/vtolsim/-/blob/master/geometric_control/geometric_control_airsim_sim.py), located in the [vtolsim](https://gitlab.magiccvs.byu.edu/urbanmobility/vtolsim/vtolsim) repository.
+This guide is for running a simulation of a tiltrotor VTOL vehicle inside a prebuilt binary of the CityBlocks world - a custom world modified for AirSim by the MAGICC Lab. The driving script, complete with trajectory generation, controllers, and an AirSim client, is [`geometric_control_airsim_sim.py`](https://github.com/byu-magicc/vtolsim/blob/main/controllers/geometric_control/geometric_control_airsim_sim.py), located in the [vtolsim](https://github.com/byu-magicc/vtolsim) repository.
 
 Here is what you will need to do to run the script `geometric_control_airsim_sim.py`:
 
@@ -14,8 +14,8 @@ Here is what you will need to do to run the script `geometric_control_airsim_sim
 1. Activate your AirSim virtual environment
     * e.g. `source ~/.virtualenvs/airsim/bin/activate`
 1. `cd` into `AirSim/PythonClient` and run `pip install -e .`
-1. Now clone vtolsim: `git clone --recursive git@magiccvs.byu.edu:urbanmobility/vtolsim/vtolsim.git`
-1. `cd` into `vtolsim/geometric_controller`
+1. Now clone vtolsim: `git clone git@github.com:byu-magicc/vtolsim.git`
+1. `cd` into `controllers/geometric_control`
 1. In another terminal session, start running `<path to CityBlocks dir>/LinuxNoEditor/CityBlocks.sh`
 1. Now you can run `python geometric_control_airsim_sim.py` and it should fly the trajectory.
 

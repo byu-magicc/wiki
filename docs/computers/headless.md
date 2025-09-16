@@ -3,7 +3,7 @@ Headless vs Graphical Linux
 
 When running your robot in hardware demonstrations and data gathering sessions, it is advantageous to run your companion computer in a **headless** (or text-based) mode with no Desktop Environment. This will save on resources like CPU and RAM, giving your algorithms slightly more computational power.
 
-To do this, we will use `systemctl` commands. For a brief overview of `systemctl`, read the [Startup Scripts with systemd](systemd.md) article.
+To do this, we will use `systemctl` commands. For a brief overview of `systemctl`, read the [Startup Scripts with systemd] article.
 
 ## Making Headless the Default Configuration ##
 
@@ -43,4 +43,10 @@ $ sudo systemctl set-default -f graphical.target
 
 ## Resources ##
 
-- [Non-graphical boot with systemd](https://unix.stackexchange.com/questions/164005/non-graphical-boot-with-systemd)
+- [Non-graphical boot with systemd]
+
+
+<!-- links -->
+
+[Startup Scripts with systemd]: systemd.md
+[Non-graphical boot with systemd]: https://unix.stackexchange.com/questions/164005/non-graphical-boot-with-systemd

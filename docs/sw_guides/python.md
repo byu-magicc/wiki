@@ -120,7 +120,3 @@ user@hostname:~$ sudo bash -c 'echo $HOME $USER'
 user@hostname:~$ sudo -H bash -c 'echo $HOME $USER'
 /root root
 ```
-
-## Example non-ROS Python 3 Project on a ROS machine ##
-
-See the [python-uav-simulator](https://gitlab.magiccvs.byu.edu/robust_tracking/python-uav-simulator) project in the MAGICC GitLab.

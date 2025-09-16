@@ -17,7 +17,7 @@ We have the `CMakelists.txt` file that you're used to seeing, the `package.xml`,
 
 # Example: Moving Sensor Package
 
-The picture above has the general outline of what is in each node, but here's an example node which listens to the turtlesim pose message and publishes a boolean flag of whether or not it is moving. The "moving_sensor" package is in a git repo [here](https://gitlab.magiccvs.byu.edu/lab/ros2-tutorials). "Bool.msg" in "bool_interfaces/msg" is a message type I created which is simply "bool data". If you're interested in creating custom msg and srv files, see [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html).
+The picture above has the general outline of what is in each node, but here's an example node which listens to the turtlesim pose message and publishes a boolean flag of whether or not it is moving. The "moving_sensor" package is in the `ros2-tutorials` git repo. "Bool.msg" in "bool_interfaces/msg" is a message type I created which is simply "bool data". If you're interested in creating custom msg and srv files, see [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html).
 
 The file structure appears as follows:
 
@@ -49,7 +49,7 @@ endif()
 find_package(ament_cmake REQUIRED)        # This goes out and finds the packages required for our moving sensor.
 find_package(turtlesim REQUIRED)          # We need turtlesim because we are listening to turtlesim/msg/Pose messages.
 find_package(bool_interfaces REQUIRED)    # We need bool_interfaces because we are publishing a bool_interfaces/msg/Bool.
-find_package(rclcpp REQUIRED)             # Often, we need Eigen, tf, and other packages that we use in the node.  
+find_package(rclcpp REQUIRED)             # Often, we need Eigen, tf, and other packages that we use in the node.
 
 
 include_directories(include) # This line makes sure the compiler looks in the include folder for our headers
@@ -57,14 +57,14 @@ include_directories(
   ${ament_INCLUDE_DIRS}      # This line adds in the headers already added by ament.
 )
 
-## Declare a cpp executable 		
+## Declare a cpp executable
 add_executable(moving_sensor_node src/moving_sensor_node.cpp src/moving_sensor.cpp)
 # These lines create the executable (node).  You can make more than
 # one node per package, each node should have only one main() function.
 # We explicitly tell it which .cpp files to compile into that node
 
 ## Add ament target dependencies of the executable/library
-ament_target_dependencies(moving_sensor_node rclcpp turtlesim bool_interfaces) 
+ament_target_dependencies(moving_sensor_node rclcpp turtlesim bool_interfaces)
 # This ensures that the turtlesim and bool_interfaces packages, including their messages, are properly set up before your node is built.
 
 install(TARGETS
@@ -91,7 +91,7 @@ Let's look now at the `package.xml`.  This file is by far the easiest of the bun
 
   <license>Apache-2.0</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend> 
+  <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>turtlesim</depend>
   <depend>bool_interfaces</depend>
   <depend>rclcpp</depend>
@@ -112,7 +112,7 @@ Let's look now at the `package.xml`.  This file is by far the easiest of the bun
 
 #include "rclcpp/rclcpp.hpp"
 #include "turtlesim/msg/pose.hpp"
-#include "bool_interfaces/msg/bool.hpp" 
+#include "bool_interfaces/msg/bool.hpp"
 
 namespace moving_sensor
 {
@@ -193,9 +193,9 @@ void MovingSensor::poseCallback(const turtlesim::msg::Pose::SharedPtr msg)
 // changing the message, in the case that another node is also listening to it.
 {
   bool_interfaces::msg::Bool out_flag;  // create a new message to store the result of our check in
-  out_flag.data = msg->linear_velocity > threshold_; 
+  out_flag.data = msg->linear_velocity > threshold_;
   // figure out if our velocity is more than the threshold and save the result in our new message
-  
+
   // publish the message to ROS2
   bool_publisher_->publish(out_flag);
 }
@@ -212,7 +212,7 @@ void MovingSensor::poseCallback(const turtlesim::msg::Pose::SharedPtr msg)
 int main(int argc, char **argv)
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<moving_sensor::MovingSensor>());  
+  rclcpp::spin(std::make_shared<moving_sensor::MovingSensor>());
   // instatiate our class object and check for new messages and call the callback if we get one
 
   rclcpp::shutdown();

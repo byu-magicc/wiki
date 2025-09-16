@@ -29,8 +29,8 @@ fire, dump sand on top of the flaming battery. Do not use water or a fire exting
 the flaming battery. Only use water or a fire-extinguisher on other objects that catch
 fire in the vicinity.
 
-- Read, study, and internalize [*Battery Basics*]
-- Read, study, and internalize the [*Battery Charging Guide*]
+- Read, study, and internalize [**_Battery Basics_**]
+- Read, study, and internalize the [**_Battery Charging Guide_**]
 - Never cut the postive and negative wires of the battery at the same time (e.g. when replacing a connector)
   - This could short circuit
   - This could ruin the battery
@@ -46,14 +46,14 @@ fire in the vicinity.
   - Place one of the orange rocks in your pocket
 - Last person to leave the lab:
   - Check if any of the charge cases are closed and, if so, disconnect all batteries and open the cases
-- If the battery will sit dormant for more than 2 or 3 days, place the battery cell voltages at storage voltage (see [*Battery Basics*])
+- If the battery will sit dormant for more than 2 or 3 days, place the battery cell voltages at storage voltage (see [**_Battery Basics_**])
 - Store batteries either in metal ammo boxes or in li-po battery bags
 - Do not use the "discharge" function of the charger
   - It zeroes out the voltage, ruining the battery
   - It is meant for battery disposal - we rarely need this
 
-[*Battery Basics*]: hw_guides/lipo_batts.md
-[*Battery Charging Guide*]: hw_guides/charging_lipo_batts.md
+[**_Battery Basics_**]: hw_guides/lipo_batts.md
+[**_Battery Charging Guide_**]: hw_guides/charging_lipo_batts.md
 
 ## Build Room ##
 
@@ -105,12 +105,10 @@ fire in the vicinity.
   - The landscape can change quickly -- wear the safety glasses
 - Make sure there is a trained safety pilot whenever the vehicle is armed
   - The safety pilot's __sole responsibility__ is to operate the transmitter, ready to take control
-  - Do not set the transmitter down to tune gains or watch plots - request a lab safety pilot's help (see [lab roster])
+  - Do not set the transmitter down to tune gains or watch plots - request a lab safety pilot's help (see lab roster)
 - If your vehicle is powered and you need to move/touch it --> wear the welding gloves!
   - Or alternately, switch off your safety switch (using a stick, or the glove)
 - Be familiar with how to use the fire extinguisher (most departments' new-hire training includes this and it is available on the Y-train website)
-
-[lab roster]: https://internal.magiccvs.byu.edu/#!lab_info/roster.md
 
 
 ## Outdoor Flights ##

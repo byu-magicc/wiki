@@ -216,7 +216,7 @@ Good info on the NVIDIA Power Model (nvpmodel): [JetsonHacks - nvpmodel](https:/
 
 It is advantageous to run this command on boot. You can do this with a `systemd service` file. First, create a `jetson-max-power.sh` file with execute permissions. (For security, it is recommended to place it in a directory owned by root, such as `/etc/<max_power.d>/jetson-max-power.sh`. Personally, I just place it at `~/software/jetson-max-power.sh`.) Wherever you place the `*.sh` script, make sure the `ExecStart` line in the `*.service` file points to it.
 
-The [`*.service`](https://gitlab.magiccvs.byu.edu/lab/wiki/blob/master/public/computers/assets/jetson-max-power.service) and [`*.sh`](https://gitlab.magiccvs.byu.edu/lab/wiki/blob/master/public/computers/assets/jetson-max-power.sh) files are available on the [MAGICC GitLab server](https://gitlab.magiccvs.byu.edu/lab/wiki/tree/master/public/computers/assets). Place the `*.service` file at `/etc/systemd/system/jetson-max-power.service`, and enable with `sudo systemctl enable jetson-max-power.service`.
+The [`*.service`](./assets/jetson-max-power.service) and [`*.sh`](./assets/jetson-max-power.sh) files are available on the [MAGICC GitHub](https://github.com/byu-magicc/wiki/tree/main/docs/computers/assets). Place the `*.service` file at `/etc/systemd/system/jetson-max-power.service`, and enable with `sudo systemctl enable jetson-max-power.service`.
 
 NOTE: CRITICAL
     Be sure to fix any relevant paths in these two files before enabling the systemd service. If you have already enabled, and need to change the `*.service` file, you will need to either reboot, or run `sudo systemctl daemon-reload`.
@@ -225,7 +225,7 @@ NOTE: CRITICAL
 
 The Jetson TX2 comes with embedded Wi-Fi/bluetooth. The dev kit comes with two antennas. The TX2 Wi-Fi can run with just 1 antenna connected to J9, which is the U.FL connector furthest from the S/N sticker. (See [here](https://devtalk.nvidia.com/default/topic/919406/can-the-tx1-be-used-with-only-1-antenna-/).) The other U.FL connector is for Bluetooth.
 
-If you are only going to use a Ubiquiti Bullet hard-wired to the Orbitty ethernet port (this is highly recommended for MAGICC Lab Vehicles! see [Lab Standard HW/SW Setup](https://internal.magiccvs.byu.edu/#!inventory-hw.md)), we suggest disabling the Wi-Fi in the gui, or alternatively hard-blocking the wireless card with `rfkill`.
+If you are only going to use a Ubiquiti Bullet hard-wired to the Orbitty ethernet port (this is highly recommended for MAGICC Lab Vehicles! see [Lab Standard HW/SW Setup]), we suggest disabling the Wi-Fi in the gui, or alternatively hard-blocking the wireless card with `rfkill`.
 
 You can view the Wi-Fi RSSI/link quality with the following command (with or without the `watch -n 0.1`):
 
@@ -240,6 +240,10 @@ $ sudo iw dev wlan0 set power_save off #- to disable power save and reduce ping 
 ```
 
 You can add this line to the `.sh` script called by `jetson-max-power.service`. If you downloaded the file available on the GitLab server, it is already included. You're welcome. :)
+
+<!-- Links -->
+[Lab Standard HW/SW Setup]: https://github.com/byu-magicc/wiki-private/blob/main/lab_resources/inventory-hw.md
+
 
 ## USB Devices ##
 

@@ -168,13 +168,18 @@ export PATH=/usr/local/opencv/bin:$PATH
 
 ## Compute Capability ##
 
-See [this visual_mtt repo](https://gitlab.magiccvs.byu.edu/robust_tracking/visual_mtt2/issues/29) for a discussion on choosing the right compute capability for your platform. Failure to do so when building OpenCV can result in an error such as:
+You must select the correct "compute capability" for your platform.
+Failure to do so when building OpenCV can result in an error such as:
 
 ```bash
 GPU API call (invalid device function)
 ```
 
 The TX1 has a [compute capability](https://en.wikipedia.org/wiki/CUDA) of 5.3 and TX2 has 6.2, as shown on Wikipedia.
+The take-home is that you must set the CMake variable `CUDA_ARCH_BIN` equal to that of the target device.
+Note that it may be possible to specify a _list_ of target compute capabilities, e.g. `CUDA_ARCH_BIN=2.0 3.0 3.5 3.7 5.0 5.2 6.0 6.1`
+
+More info can be found on the [opencv repo](https://github.com/opencv/opencv/issues/4849)
 
 ## Managing Multiple OpenCV Versions (outside of ROS) ##
 
@@ -240,7 +245,7 @@ It can be helpful to be certain at runtime if you are linking to the correct Ope
   ROS_INFO("Visual MTT CUDA enabled with %i device(s).", cv::cuda::getCudaEnabledDeviceCount());
 #endif
 ```
-Note that in this snippet we are also able to know at compile-time whether to use CUDA with OpenCV. For more details, see the [visual_mtt](https://gitlab.magiccvs.byu.edu/robust_tracking/visual_mtt2) repo.
+Note that in this snippet we are also able to know at compile-time whether to use CUDA with OpenCV. For more details, see the `visual_mtt` repo.
 
 
 
