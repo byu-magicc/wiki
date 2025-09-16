@@ -1,0 +1,3217 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials and guides for the MAGICC lab">
+      
+      
+        <meta name="author" content="MAGICC lab members">
+      
+      
+        <link rel="canonical" href="https://byu-magicc.github.io/wiki/misc/setting_up_ssh/">
+      
+      
+        <link rel="prev" href="../ros_command_cheat_sheet/">
+      
+      
+        <link rel="next" href="../syncing_time/">
+      
+      
+      <link rel="icon" href="../../assets/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Setting Up ssh - MAGICC Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setting-up-ssh" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MAGICC Wiki" class="md-header__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAGICC Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setting Up ssh
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../safety/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Safety
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ros2_tutorials/intro/" class="md-tabs__link">
+          
+  
+  
+  ROS2 Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gazebo_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Gazebo Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../control_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Control Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/pixhawk/" class="md-tabs__link">
+          
+  
+  
+  Hardware Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sw_guides/ceres_solver/" class="md-tabs__link">
+          
+  
+  
+  Software Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../administration/getting_started_in_research/" class="md-tabs__link">
+          
+  
+  
+  Administration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../computers/systemd/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MAGICC Wiki" class="md-nav__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    MAGICC Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/starting_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Starting Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/node_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Getting Info About Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/1_L1-3_node_running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Running Nodes: Listener and Talker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/2_L1-3_turtlesim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Turtlesim Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: The ROS Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/launch_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/3_L4-5_creating_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/4_L4-5_explaining_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/rostopic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 6: ROS2 Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/5_L6_nodes_topics_and_messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 5: Nodes, Topics and Messages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/topic_remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 7: Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 8: ROS2 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/adv_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 9: Additional Launch File Syntax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/6_L7-9_more_launch_file1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 6: More Launch File Practice 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/7_L7-9_more_launch_file2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 7: More Launch File Practice 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/8_L7-9_launch_file_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 8: Creating a Launch File with Parameters and Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/9_L7-L9_edit_node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 9: diting Teleop Twist Joy Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/creating_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 10: Creating Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 11: Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/c%2B%2B_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12a: Nodes Based on Classes (C++)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/python_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12b: Nodes Based on Classes (Python)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/10_L10-12_draw_a_star/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 10: Draw a Star
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/11_L10-12_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 11: Display/Publish Fuel Remaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/12_L10-12_out_of_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 12: Stop Turtlesim When Fuel Runs Out
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/multiple_machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 13: ROS2 on Multiple Machines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 14: Others
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/mocap/mocap_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 15: Motion Capture Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gazebo Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gazebo Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Make a Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Adding Plugins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_multirotor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Make a Multirotor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_fixed_wing_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Make a Fixed Wing MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/interfacing_with_gazebo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Interfacing with Gazebo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/flying_your_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Flying Your MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: Make a World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_your_own_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Make Your Own World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_an_image_to_the_ground_plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Adding an Image to the Ground Plane
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Control Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Control Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/p_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: P Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/p_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 0: P Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pd_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: PD Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pd_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: PD Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pid_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: PID Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pid_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: PID Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/pixhawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pixhawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/rospberry_pi_zero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Zero W
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA and GPGPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ubiquiti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ubiquiti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ublox_f9p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: ZED-F9P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/c94_m8p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: C94-M8P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/asus_xtion_pro_live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ASUS Xtion Pro Live
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/intel_rs_d400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intel RealSense D4xx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lithium-Polymer Batteries (Li-Po)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/charging_lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Battery Charger Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/design_propulsion_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Designing a Propulsion System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ceres_solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro to Ceres Solver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/install_cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenCV with CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Know-how
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/mocap_room_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mocap Room Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ublox_read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UBLOX_read Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/vtol_airsim_qs_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VTOL AirSim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/getting_started_in_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/new_member_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New Lab-member Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/conference_room_schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conference Room Schedule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Startup Scripts with systemd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/headless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Headless vs Graphical Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caedm_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CAEDM Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_ros_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugging ROS Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qt_creator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qt Creator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros_command_cheat_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Command Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is ssh?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      basic overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      a note on ports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Custom Hostname
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-creating-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on creating a key
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="More on creating a key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Caveats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      git
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syncing_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syncing Time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Vim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vpn_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VPN Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is ssh?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      basic overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      a note on ports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Custom Hostname
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-creating-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on creating a key
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="More on creating a key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Caveats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      git
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/byu-magicc/wiki/edit/main/docs/misc/setting_up_ssh.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="setting-up-ssh">Setting Up ssh<a class="headerlink" href="#setting-up-ssh" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-ssh">What is ssh?<a class="headerlink" href="#what-is-ssh" title="Permanent link">&para;</a></h2>
+<p><code>ssh</code> (secure shell) is a program we use to work on remote computers.
+It allows you to log in to a remote computer, and open up a terminal window from that remote computer and display it on your screen.
+We can use this to work on the companion computer of a multirotor because it is not connected to a keyboard or monitor.
+With shell access, we can run commands (e.g. roslaunch), change code, copy a rosbag, move files, etc...</p>
+<p>Terminology:
+"ssh server": The (usually remote) computer that will be logged into; the machine whose ip address is <code>&lt;ip.ad.dr.ess&gt;</code>
+"ssh client": The computer you are using; the one on which you type <code>ssh &lt;username&gt;@&lt;ip.ad.dr.ess&gt;</code></p>
+<p>In all examples below, a multirotor named "shredder" is connected to the lab network and its IP address is <code>192.168.1.237</code>.</p>
+<p>Pre-requisites:
+The server's IP address needs to be routable from your client machine.
+E.g. If you are at home, and your IP address is <code>192.168.1.28</code>, and you want to <code>ssh</code> into shredder, the command <code>$ ssh shredder@192.168.1.237</code> will fail.
+This is because your home 192.168.1/24 subnet is different from the lab's 192.168.1/24 subnet.
+Your local machine needs to have the ssh-client, and the remote machine you will be accessing needs to have the ssh-server daemon running.
+To install both the server and client (perfectly acceptable to have both on both machines), type:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ssh
+</code></pre></div>
+<p>Ubuntu automatically enables the ssh-server daemon upon installation.</p>
+<p>For some history, and extended information beyond what is provided here, read the <a href="https://wiki.archlinux.org/title/SSH_keys">Arch Wiki article</a>, as well as lots of posts on lots of websites.
+Just know that some sites are not peer reviewed by knowledgeable and experienced individuals, nor updated often (if ever).
+The Arch Wiki generally has both of these traits.</p>
+<!-- Links -->
+<h2 id="basic-overview">basic overview<a class="headerlink" href="#basic-overview" title="Permanent link">&para;</a></h2>
+<p><code>ssh</code> is actually really simple.
+It essentially consists of logging into a computer with a known username and password.
+For example, if I were connected to the lab network and typed</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>ssh<span class="w"> </span>shredder@192.168.1.237
+</code></pre></div>
+<p>I would be connecting to the computer whose IP address is 192.168.1.237 and logging in as the user "shredder".
+After providing shredder's password as requested on the command line, I would have a shredder terminal session on my computer.
+I could run commands, and move, edit and delete files, just as if I were typing on a keyboard directly attached to shredder.</p>
+<p>Try "ssh-ing" into your multirotor.
+Fill in the correct user and IP address where indicated.
+Type</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>&lt;username&gt;@&lt;your.multirotor.ip.address&gt;
+</code></pre></div>
+<p>After you connect, it will ask you for your password--type it in, and see if you get in.
+If you have problems, talk to someone else about getting access.
+Otherwise, you are in your home folder on your vehicle!
+I realize that's not terribly exciting, but it's a start.
+To leave, simply hit <code>CTRL-D</code> on your keyboard, or type</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+<p>This places your terminal session back to controlling your local machine.</p>
+<h2 id="a-note-on-ports">a note on ports<a class="headerlink" href="#a-note-on-ports" title="Permanent link">&para;</a></h2>
+<p>ssh by default will use port 22, but the magicc server is set up on port 290, so we have to manually change it.
+The "-p 290" command tells ssh to use port 290 on the server.</p>
+<h2 id="creating-a-custom-hostname">Creating a Custom Hostname<a class="headerlink" href="#creating-a-custom-hostname" title="Permanent link">&para;</a></h2>
+<p>What if I didn't want to type the full command,</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>username@hostname
+</code></pre></div>
+<p>every time I wanted to log in?
+Well, ssh allows you to make custom aliases (e.g. nicknames) for different hosts.
+Here's how you could make a custom alias for shredder.
+(This assumes that you already have access.)</p>
+<p>First, navigate to your <code>~/.ssh/</code> directory.
+If it doesn't exist, then make it.
+Create a new "config file by typing</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gedit<span class="w"> </span>~/.ssh/config
+</code></pre></div>
+<p>and create config stanzas by adding the following lines</p>
+<div class="highlight"><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">90</span>
+<span class="c1"># IdentitiesOnly yes</span>
+
+Host<span class="w"> </span>shred
+<span class="w">    </span>Hostname<span class="w"> </span><span class="m">192</span>.168.1.237
+<span class="w">    </span>User<span class="w"> </span>shredder
+</code></pre></div>
+<p>Now, if you type</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>shred
+</code></pre></div>
+<p><code>ssh</code> will replace "shred" with <code>shredder@192.168.1.237</code>.
+It can save a lot of typing over time.</p>
+<h2 id="shared-keys">Shared Keys<a class="headerlink" href="#shared-keys" title="Permanent link">&para;</a></h2>
+<p>But what if I didn't want to type my password every time I log in?
+For example, when you download a git repository from the magicc server, you would have to type your password every time you wanted to download an individual ros package.
+(That would mean you'd have to type your password ~30 times if you downloaded the full Relative_Nav stack).
+Luckily, <code>ssh</code> allows you to use a "shared key" between two computers by creating a private-public keypair.
+This allows a client to access a host without typing the password every time, because the client is recognized as a trusted source.</p>
+<p>Let's try this by creating a shared key between your computer and the magiccvs server.
+Start by navigating to that same <code>~/.ssh/</code> folder on your local machine, and typing</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh-keygen
+</code></pre></div>
+<p>It will first ask you where to save the generated key.
+The default location is fine, so just press enter.</p>
+<p>It will then ask you for a "passphrase" which you can leave empty and just press enter a few times.
+Kudos if you assign a password to your private key.
+(We believe in security but not that much. :P)
+This will create a private key file, a public key file, and a fingerprint printed to screen as a box of random characters.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Safeguard your private key.
+If your machine, or your private key, get compromised, immediately decommision the public key that has been deployed to ssh servers, github, etc.
+Generate a new keypair after ensuring no persistent threat is present.
+Deploy your new public key to the services to which you need access.</p>
+</div>
+<p>You usually do not need to worry about the fingerprint.
+If you care, there are some good superuser and stack exchange posts about it.</p>
+<p>Now, we want to copy that key over to shredder.
+The default settings that allow ssh login by username and password allow you to copy your public key to the remote machine using your password.
+To do this, simply type</p>
+<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>shred
+</code></pre></div>
+<p>That copies the public key you just generated over to the vehicle, using the mapping you created in the previous section.
+You'll need to type your password for the magiccvs server to accept the new file.
+But after that, you'll no longer need to type your password to log into the magicc server from your computer.
+The <code>ssh</code> server will verify your identity using public-private key verification.
+You should go ahead and test it out!</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>shred
+</code></pre></div>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Certain lab resources do not use the default settings, opting to disable password authentication.
+This is generally considered safer.
+In this case, you need to copy the contents of your <code>~/.ssh/id_rsa.pub</code> public key that was created with the <code>ssh-keygen</code> command.
+Paste that public key onto a new line in the <code>~/.ssh/authorized_keys</code> file on your <code>ssh</code> server.</p>
+<p>In this case, you would connect "shredder" to a monitor and keyboard, and copy the public key via e.g. a usb drive.
+Create the <code>authorized_keys</code> file if it does not already exist.</p>
+<p>You will also need to alter the appropriate stanza in your <code>~/.ssh/config</code>.
+First, uncomment <code>IdentitiesOnly yes</code> at the top of the file (as seen above in !#creating-a-custom-hostname).
+Next, add <code>IdentityFile ~/.ssh/private_key</code> inside the appropriate stanza.</p>
+<p>Your whole file should look something like this:</p>
+<p><code>~/.ssh/config</code></p>
+<div class="highlight"><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">90</span>
+IdentitiesOnly<span class="w"> </span>yes
+
+Host<span class="w"> </span>shred
+<span class="w">    </span>Hostname<span class="w"> </span><span class="m">192</span>.168.1.237
+<span class="w">    </span>User<span class="w"> </span>shredder
+<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/your_private_key
+</code></pre></div>
+<h2 id="more-on-creating-a-key">More on creating a key<a class="headerlink" href="#more-on-creating-a-key" title="Permanent link">&para;</a></h2>
+<p>There are several different types of keys that you can use.
+The default is an <code>rsa</code> key.
+You can look up its history if you are interested.
+What you need to know is that a 2048-bit rsa key used to be default.
+Now, modern computers can brute-force a 2048-bit rsa key in "reasonable time".
+It is recommended to use <strong><em>at least</em></strong> a 3072-bit rsa key (this is the current default).
+A 4096-bit key is currently considered more than sufficient.
+The larger the key, the longer it will take to authenticate, but on modern computers, it is generally negligible.
+An <code>ed25519</code> key type is considered about as strong as a 3072-bit rsa key.
+I personally prefer these because the public key is much shorter than one generated with <code>rsa</code>, and hence is feasibly typed should the necessity arise.</p>
+<p>You can create an ed25519 key with:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.ssh
+$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;remoteHost_usernameOnRemoteHost_localClientHostName_localUsername&quot;</span><span class="w"> </span>-f<span class="w"> </span>remoteHost_usernameOnRemoteHost_localClientHostName_localUsername
+</code></pre></div>
+<p>You'll notice this creates two files in your <code>~/.ssh/</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.ssh
+$<span class="w"> </span>ls
+
+remoteHost_usernameOnRemoteHost_localClientHostName<span class="w"> </span>remoteHost_usernameOnRemoteHost_localClientHostName_localUsername.pub
+</code></pre></div>
+<p>Inside the pubkey, at the end, you will see the contents of the string you typed after the <code>-C</code>.
+<code>-C</code> is for "comment".
+You are free to type anything in this string.
+It is simply a method to help humans keep track of the contents/uses of that keypair.
+<code>-f</code> is the filename.
+I generally try to make the comment and the filename match, though this is not a requirement.
+If you paste the public key into your github <code>ssh</code> keys settings section, the comment is conveniently set to the title of that key.
+This is an example of how a comment can help you later.
+If you have multiple keys in your github account, and you need to decommission one of them, it will be easy to know, by its title, which needs to be removed.</p>
+<p>I recommend creating a new key for each <code>ssh</code> server you wish to connect to.
+Key management in this manner facilitates decommissioning a key because if a single key gets accidentally published somewhere, you can decommission on that server only (or service, e.g. github) and not have to worry about the other servers or services that you connect to with <code>ssh</code>.
+If you only use one key for everything, if that private key becomes compromised, you have to decommission and re-deploy to every. single. host/site/service.
+Thus, it is helpful to have meaningful comments and file names.</p>
+<h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h3>
+<p>Note that you will have to use the nickname you set in the <code>Host</code> field if three conditions are met:</p>
+<ol>
+<li>You use <code>IdentitiesOnly</code> and <code>IdentityFile</code> in your stanza,</li>
+<li>You use a non-default filename (e.g. you set <code>-f some_non_default_key_name</code>) when generating the key, and</li>
+<li>That custom filename is in the config stanza</li>
+</ol>
+<p><code>ssh</code> will not know it needs to use that specific, custom keyname when attempting to authorize a connection.
+By using the nickname on the <code>Host</code> line that opens the stanza, you are informing <code>ssh</code> of the non-standard key name to use.</p>
+<h4 id="git">git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h4>
+<p>This complicates certain things, e.g. cloning submodules with <code>git submodule update --init --recursive</code>.
+When you first clone a repo, you can use your nickname, if your stanza is configured for e.g. GitHub.
+Let's say for example you have ssh-ed into shredder, and have created a keypair and pasted the public key into GitHub to pull down changes you make on your main dev machine.
+Further, your GitHub username is <code>coolcoder</code>.
+A stanza in <code>/home/shredder/.ssh/config</code> could look like this:</p>
+<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>ghub.coolcoder
+<span class="w">    </span>HostName<span class="w"> </span>github.com
+<span class="w">    </span>User<span class="w"> </span>git
+<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/github_coolcoder_shredder
+</code></pre></div>
+<p>Create the keypair with:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.ssh
+$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;github_coolcoder_shredder&quot;</span><span class="w"> </span>-f<span class="w"> </span>github_coolcoder_shredder
+</code></pre></div>
+<p>Copy the contents of <code>github_coolcoder_shredder.pub</code> into your GitHub account.</p>
+<p>To clone a repo and retrieve the submodule content, you would e.g.:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>ghub.coolcoder:coolcoder/superawesome_research.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>superawesome_research
+$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+</code></pre></div>
+<p>However, the last command would fail because your <code>.gitmodules</code> file should look something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>submodule<span class="w"> </span><span class="s2">&quot;superawesome_utils&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>superawesome_utils
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git@github.com:coolcoder/superawesome_utils.git
+</code></pre></div>
+<p><code>ssh</code> would fail to authenticate you properly with GitHub because it did not use your GitHub keypair.</p>
+<p>To resolve this, you should alter the <code>.git/config</code> file in your local repo directory.
+There should be a line that looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>submodule<span class="w"> </span><span class="s2">&quot;superawesome_utils&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="nv">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">        </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git@github.com:coolcoder/superawesome_utils.git
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section will only be visible after calling <code>submodule update</code>.
+So the workflow is to run it once, expecting it to fail, so that it writes this section to the local <code>.git/config</code>.
+Then, you can open that file in your favorite editor and make this following change:</p>
+</div>
+<p>Change the url line to e.g. the following:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>submodule<span class="w"> </span><span class="s2">&quot;superawesome_utils&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="nv">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">        </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ghub.coolcoder:coolcoder/superawesome_utils.git
+</code></pre></div>
+<p>and run a second time:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+</code></pre></div>
+<p>Now, ssh will know that when attempting to fetch the submodule content, it needs to verify identity with GitHub using your GitHub keypair, just as it does for your main repo.
+You probably do not want to change the <code>.gitmodule</code> file to use your ssh nickname because:</p>
+<ol>
+<li>If you clone it on a different machine you own, you may be using a different nickname, or keyfile name, or both</li>
+<li>If someone else is working on your code with you, they will have their own authentication method, e.g. perhaps they (inferiorly) prefer username/password authentication.</li>
+</ol>
+<p>So, leave the traditional clone url in the <code>.gitmodule</code> file in your repo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

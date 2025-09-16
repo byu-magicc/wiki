@@ -1,0 +1,2893 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials and guides for the MAGICC lab">
+      
+      
+        <meta name="author" content="MAGICC lab members">
+      
+      
+        <link rel="canonical" href="https://byu-magicc.github.io/wiki/misc/vpn_setup/">
+      
+      
+        <link rel="prev" href="../using_vim/">
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>VPN Setup - MAGICC Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vpn-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MAGICC Wiki" class="md-header__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAGICC Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VPN Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../safety/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Safety
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ros2_tutorials/intro/" class="md-tabs__link">
+          
+  
+  
+  ROS2 Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gazebo_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Gazebo Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../control_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Control Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/pixhawk/" class="md-tabs__link">
+          
+  
+  
+  Hardware Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sw_guides/ceres_solver/" class="md-tabs__link">
+          
+  
+  
+  Software Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../administration/getting_started_in_research/" class="md-tabs__link">
+          
+  
+  
+  Administration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../computers/systemd/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MAGICC Wiki" class="md-nav__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    MAGICC Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/starting_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Starting Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/node_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Getting Info About Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/1_L1-3_node_running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Running Nodes: Listener and Talker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/2_L1-3_turtlesim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Turtlesim Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: The ROS Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/launch_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/3_L4-5_creating_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/4_L4-5_explaining_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/rostopic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 6: ROS2 Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/5_L6_nodes_topics_and_messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 5: Nodes, Topics and Messages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/topic_remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 7: Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 8: ROS2 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/adv_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 9: Additional Launch File Syntax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/6_L7-9_more_launch_file1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 6: More Launch File Practice 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/7_L7-9_more_launch_file2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 7: More Launch File Practice 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/8_L7-9_launch_file_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 8: Creating a Launch File with Parameters and Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/9_L7-L9_edit_node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 9: diting Teleop Twist Joy Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/creating_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 10: Creating Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 11: Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/c%2B%2B_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12a: Nodes Based on Classes (C++)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/python_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12b: Nodes Based on Classes (Python)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/10_L10-12_draw_a_star/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 10: Draw a Star
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/11_L10-12_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 11: Display/Publish Fuel Remaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/12_L10-12_out_of_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 12: Stop Turtlesim When Fuel Runs Out
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/multiple_machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 13: ROS2 on Multiple Machines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 14: Others
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/mocap/mocap_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 15: Motion Capture Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gazebo Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gazebo Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Make a Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Adding Plugins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_multirotor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Make a Multirotor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_fixed_wing_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Make a Fixed Wing MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/interfacing_with_gazebo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Interfacing with Gazebo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/flying_your_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Flying Your MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: Make a World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_your_own_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Make Your Own World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_an_image_to_the_ground_plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Adding an Image to the Ground Plane
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Control Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Control Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/p_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: P Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/p_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 0: P Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pd_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: PD Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pd_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: PD Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pid_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: PID Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pid_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: PID Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/pixhawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pixhawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/rospberry_pi_zero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Zero W
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA and GPGPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ubiquiti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ubiquiti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ublox_f9p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: ZED-F9P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/c94_m8p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: C94-M8P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/asus_xtion_pro_live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ASUS Xtion Pro Live
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/intel_rs_d400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intel RealSense D4xx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lithium-Polymer Batteries (Li-Po)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/charging_lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Battery Charger Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/design_propulsion_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Designing a Propulsion System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ceres_solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro to Ceres Solver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/install_cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenCV with CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Know-how
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/mocap_room_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mocap Room Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ublox_read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UBLOX_read Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/vtol_airsim_qs_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VTOL AirSim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/getting_started_in_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/new_member_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New Lab-member Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/conference_room_schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conference Room Schedule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Startup Scripts with systemd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/headless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Headless vs Graphical Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caedm_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CAEDM Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_ros_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugging ROS Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qt_creator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qt Creator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros_command_cheat_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Command Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syncing_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syncing Time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Vim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    VPN Setup
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/byu-magicc/wiki/edit/main/docs/misc/vpn_setup.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="vpn-setup">VPN Setup<a class="headerlink" href="#vpn-setup" title="Permanent link">&para;</a></h1>
+<p>A VPN (Virtual Private Network) allows several devices that are on different networks to be placed on a common subnet.
+Routing can be configured such that only specific data is sent to the VPN while <em>normal requests</em> are sent to the open internet.
+However, that functionality is out of the scope here.
+We will provide a method that routes <strong><em>all</em></strong> network requests to the vpn.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are much simpler solutions available to solve the original problem that served as motivation for this article.
+You can read about that motivation in the <a href="#intro">Legacy: Intro</a> paragraph.
+If you still want a VPN, WireGuard can now be used to create a simple, secure, and <em>fast</em> VPN.
+A few details are included here.</p>
+</div>
+<p>TODO: describe how to set up wireguard vpn with hub and spokes</p>
+<h1 id="legacy">Legacy<a class="headerlink" href="#legacy" title="Permanent link">&para;</a></h1>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>The VPN (Virtual Private Network) Allows us to tie several networks together under the same "subnet," allowing all of the ROS computers to think they are on the same network, and function properly.
+This was a problem when we needed to add an odroid to the hex to process incoming USB data in real time and wireless connections were not fast enough so we tied the odroid to shredder with an ethernet cable and made a network between them.
+The only problem was that it was impossible to have the laptop, casey, or splinter be a part of that ROS network, and visualize or send commands.
+To solve that, we created a VPN with shredder as the host.
+Shredder assigns IPs on an arbitrary subnet that is accessible by any computer who is attached to shredder in any way.
+Therefore the odroid, and casey can both talk to each other as if they were next to each other in the network.</p>
+<p>We use a PPTP (Point-to-point tunneling protocol) VPN with virtually no security hosted by shredder.
+This will show you how to set it up.</p>
+<p>Most of this tutorial comes from <a href="https://www.digitalocean.com/community/tutorials/how-to-setup-your-own-vpn-with-pptp">Digital Ocean</a></p>
+<h2 id="establishing-shredder-as-the-host">Establishing Shredder as the Host<a class="headerlink" href="#establishing-shredder-as-the-host" title="Permanent link">&para;</a></h2>
+<p>Use an hdmi cable to connect shredder to a monitor.
+Click on the network connections manager.
+Click "edit connection." click "add."
+Make sure that the highlighted selection is "ethernet."
+Click create. Change the "connection name" as desired.
+Click "ipv4 settings."
+Change the "method" to "shared to other computers."
+Click save and you're done.
+Shredder will now act as host for other computers to connect on the network.</p>
+<h2 id="setting-up-the-vpn-hosts">Setting Up the VPN Hosts<a class="headerlink" href="#setting-up-the-vpn-hosts" title="Permanent link">&para;</a></h2>
+<p>The VPN host is going to act as the relay between networks.
+All the computers needs to be able to resolve it's IP address, so in our case, we made shredder the host, since it was a part of both networks.
+All of the following commands require root access, so just save yourself some typing and open a root command prompt.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>bash
+</code></pre></div>
+<h3 id="setting-up-pptpd">Setting up pptpd<a class="headerlink" href="#setting-up-pptpd" title="Permanent link">&para;</a></h3>
+<p>First, install the pptp server on shredder</p>
+<div class="highlight"><pre><span></span><code>apt<span class="w"> </span>install<span class="w"> </span>pptpd
+</code></pre></div>
+<p>Next, we need to go in and tell shredder which IP addresses to assign to clients and what to assign itself on the network.
+Use vim to edit "/etc/pptpd.conf".
+Find, uncomment and edit the following lines to look as follows:</p>
+<div class="highlight"><pre><span></span><code>localip<span class="w"> </span><span class="m">192</span>.168.2.2
+remoteip<span class="w"> </span><span class="m">192</span>.168.2.3-20
+</code></pre></div>
+<p>or something like that.
+This sets the hosts's IP to be 192.168.2.2, and opens up the next 28 addresses to be used by clients attached to the network.</p>
+<p>Next, we need to set up the authentication on the network.
+Each client will have a username and password and a static IP assigned to it, found in /etc/ppp/chap-secrets.
+Shredder's looks like the following:</p>
+<p><img alt="" src="../Chap-secrets.png" /></p>
+<p>Now we need to add some DNS servers, so that computers hooked to the VPN can have internet access.
+Historically, we've just used Google's DNS servers.</p>
+<p>Edit /etc/ppp/pptpd-options, find the lines starting with "ms-dns" uncomment these lines and add the following lines:</p>
+<div class="highlight"><pre><span></span><code>ms-dns<span class="w"> </span><span class="m">8</span>.8.8.8
+ms-dns<span class="w"> </span><span class="m">8</span>.8.4.4
+</code></pre></div>
+<p>Now just start up the pptp service and the VPN is up and running!</p>
+<div class="highlight"><pre><span></span><code>service<span class="w"> </span>pptpd<span class="w"> </span>restart
+</code></pre></div>
+<h3 id="setting-up-the-iptables-rules">Setting up the IPtables Rules<a class="headerlink" href="#setting-up-the-iptables-rules" title="Permanent link">&para;</a></h3>
+<p>Now the hard part, we need to set up the port forwarding.
+First allow IPv4 and IPv6 address forwarding by editing <code>/etc/sysctl.conf</code> and uncomment the following two lines</p>
+<div class="highlight"><pre><span></span><code>net.ipv4.ip_forward<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>and in the next section</p>
+<div class="highlight"><pre><span></span><code>net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>Next, we will set some NAT rules (Network Address Translation - the sole purpose of our VPN).
+In the command prompt, type the following rules.
+These rules assume that the host is accessing the network(s) on eth0 and wlan0, and the VPN will be on ppp0 Check ipconfig to make sure that the adapters are right.
+Sometimes, the adapters are on other devices, just swap them out in the following commands for whichever connections you want.</p>
+<div class="highlight"><pre><span></span><code>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-o<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>iptables-save
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-o<span class="w"> </span>wlan0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>iptables-save
+iptables<span class="w"> </span>--table<span class="w"> </span>nat<span class="w"> </span>--append<span class="w"> </span>POSTROUTING<span class="w"> </span>--out-interface<span class="w"> </span>ppp0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+iptables<span class="w"> </span>-I<span class="w"> </span>INPUT<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.0.0.0/8<span class="w"> </span>-i<span class="w"> </span>ppp0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+iptables<span class="w"> </span>--append<span class="w"> </span>FORWARD<span class="w"> </span>--in-interface<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+iptables<span class="w"> </span>--append<span class="w"> </span>FORWARD<span class="w"> </span>--in-interface<span class="w"> </span>wlan0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+</code></pre></div>
+<p>To be completely honest, I'm not 100% sure what these commands do.
+If someone else decided to dive through and figure out what all these things are, then that would be great.
+All I know is that iptables is the firewall in linux, and these commands make the computer act as a router on the various network connections.</p>
+<h3 id="special-consideration-for-a-cloud-server">Special Consideration for a Cloud Server<a class="headerlink" href="#special-consideration-for-a-cloud-server" title="Permanent link">&para;</a></h3>
+<p>If you are using a cloud server, such as the AWS or Google Compute Engine, in order to connect to the VPN, you'll need to change the security on the cloud server to allow TCP traffic on the appropriate ports.
+(Students have in the past just opened up TCP on all ports from anywhere.
+This is not secure. Do <strong><em>NOT</em></strong> do this.)</p>
+<h3 id="special-considerations-for-the-odroid">Special Considerations for the Odroid<a class="headerlink" href="#special-considerations-for-the-odroid" title="Permanent link">&para;</a></h3>
+<p>The host in our setup needed an ethernet connection to the odroid on board.
+This required an additional step in which we created a bridge to the odroid.
+To do this, all you have to do is open the network manager on the host (From the GUI), and edit the wired connection.
+Under the IPv4 Settings, change it from "Automatic" to "Shared to Other Computers."
+This creates a network between the two computers.
+Pull up ipconfig and make a note of the host's IP address on this wired network, because this will be the gateway for the odroid.</p>
+<h2 id="connecting-a-client">Connecting a Client<a class="headerlink" href="#connecting-a-client" title="Permanent link">&para;</a></h2>
+<p>We will now be connecting a client (odroid) to the host that we just set up.
+Connect the odroid to a monitor with an hdmi cable.</p>
+<p>First, if you are running lubuntu (odroid), pptp does not come default, install it with</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>network-manager-pptp
+</code></pre></div>
+<p>It comes default with the standard ubuntu install.
+Open the network manager and add a connection.
+Scroll down and select PPTP, then create</p>
+<p><img alt="" src="../Add_connection.png" /></p>
+<p>In the following dialog, name the connection something other than "VPN Connection 1" add the hosts IP as the gateway, and the username and password (from the chap-secrets file) of the client that is connecting to the host.
+Click "Advanced" and check the box "Use Point-to-Point encryption MPPE"</p>
+<p>[Image:VPN_1] [Image:VPN_2]</p>
+<p>Click "OK" then "Save" and close the network manager.</p>
+<p>To Connect to the VPN, simply click the network icon in the upper right, hover over VPN Connections, and select the newly created VPN.
+It should think for a minute, then display "VPN Connection Successful".</p>
+<p>If you type</p>
+<div class="highlight"><pre><span></span><code>ifconfig
+</code></pre></div>
+<p>into the command prompt, you should now see an additional pppX connection with a new IP address.</p>
+<h2 id="auto-connecting-to-the-vpn">Auto connecting to the VPN<a class="headerlink" href="#auto-connecting-to-the-vpn" title="Permanent link">&para;</a></h2>
+<p>To automatically connect to the VPN, such as when using the Odroid, there are a few steps.</p>
+<h3 id="disable-the-keyring">Disable the keyring<a class="headerlink" href="#disable-the-keyring" title="Permanent link">&para;</a></h3>
+<p>First, you have disable the "Default Keyring" (that annoying pop-up that asks for your password every time you log in).
+You have to install and open the password manager found in regular Ubuntu</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>seahorse
+seahorse
+</code></pre></div>
+<p>In the leftmost column under Passwords, right click the "Default" folder, and select "change password"
+Type the keyring password, then leave the new password fields blank.
+It will give you some message about it being unsafe, just ignore it and reboot the Odroid.</p>
+<h3 id="automatically-connect-to-the-ethernet">Automatically Connect to the Ethernet<a class="headerlink" href="#automatically-connect-to-the-ethernet" title="Permanent link">&para;</a></h3>
+<p>Although you have already disabled the keyring, you still have to get around it for user permission issues.
+To do this, edit the VPN connection file /etc/NetworkManager/system-connections/shredder and change the field</p>
+<div class="highlight"><pre><span></span><code>password-flags<span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<p>and then add at the bottom the two lines</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>vpn-secrets<span class="o">]</span>
+<span class="nv">password</span><span class="o">=</span>&lt;password&gt;
+</code></pre></div>
+<p>you also need to tell the ethernet connection to automatically connect to the VPN.
+Go to Network connections manager.
+Make sure the ethernet connection is highlighted and click "edit."
+Then click the "general" tab.
+Check the box that says "automatically connect to VPN when using this connection."</p>
+<p>Then reboot the odroid.
+It should automatically connect to the VPN, the Ethernet and the WiFi without any intervention</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

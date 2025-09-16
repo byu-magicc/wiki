@@ -1,0 +1,3363 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials and guides for the MAGICC lab">
+      
+      
+        <meta name="author" content="MAGICC lab members">
+      
+      
+        <link rel="canonical" href="https://byu-magicc.github.io/wiki/computers/jetson/">
+      
+      
+        <link rel="prev" href="../pixhawk/">
+      
+      
+        <link rel="next" href="../../hw_guides/rospberry_pi_zero/">
+      
+      
+      <link rel="icon" href="../../assets/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>NVIDIA Jetson TX2 - MAGICC Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nvidia-jetson-tx2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MAGICC Wiki" class="md-header__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAGICC Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NVIDIA Jetson TX2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../safety/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Safety
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ros2_tutorials/intro/" class="md-tabs__link">
+          
+  
+  
+  ROS2 Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gazebo_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Gazebo Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../control_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Control Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../pixhawk/" class="md-tabs__link">
+          
+  
+  
+  Hardware Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sw_guides/ceres_solver/" class="md-tabs__link">
+          
+  
+  
+  Software Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../administration/getting_started_in_research/" class="md-tabs__link">
+          
+  
+  
+  Administration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../systemd/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MAGICC Wiki" class="md-nav__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    MAGICC Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/starting_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Starting Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/node_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Getting Info About Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/1_L1-3_node_running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Running Nodes: Listener and Talker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/2_L1-3_turtlesim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Turtlesim Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: The ROS Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/launch_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/3_L4-5_creating_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/4_L4-5_explaining_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/rostopic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 6: ROS2 Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/5_L6_nodes_topics_and_messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 5: Nodes, Topics and Messages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/topic_remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 7: Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 8: ROS2 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/adv_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 9: Additional Launch File Syntax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/6_L7-9_more_launch_file1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 6: More Launch File Practice 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/7_L7-9_more_launch_file2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 7: More Launch File Practice 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/8_L7-9_launch_file_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 8: Creating a Launch File with Parameters and Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/9_L7-L9_edit_node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 9: diting Teleop Twist Joy Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/creating_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 10: Creating Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 11: Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/c%2B%2B_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12a: Nodes Based on Classes (C++)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/python_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12b: Nodes Based on Classes (Python)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/10_L10-12_draw_a_star/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 10: Draw a Star
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/11_L10-12_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 11: Display/Publish Fuel Remaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/12_L10-12_out_of_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 12: Stop Turtlesim When Fuel Runs Out
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/multiple_machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 13: ROS2 on Multiple Machines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 14: Others
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/mocap/mocap_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 15: Motion Capture Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gazebo Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gazebo Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Make a Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Adding Plugins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_multirotor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Make a Multirotor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_fixed_wing_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Make a Fixed Wing MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/interfacing_with_gazebo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Interfacing with Gazebo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/flying_your_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Flying Your MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: Make a World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_your_own_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Make Your Own World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_an_image_to_the_ground_plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Adding an Image to the Ground Plane
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Control Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Control Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/p_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: P Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/p_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 0: P Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pd_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: PD Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pd_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: PD Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pid_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: PID Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pid_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: PID Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pixhawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pixhawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jetpack" class="md-nav__link">
+    <span class="md-ellipsis">
+      JetPack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux4tegra-l4t" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux4Tegra (L4T)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opencv4tegra" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenCV4Tegra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-enabled-opencv" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA-Enabled OpenCV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros-melodic" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS Melodic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Computer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carrier-board-connecttech-orbitty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carrier Board: ConnectTech Orbitty
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions-start-to-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions: Start to Finish
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocks-and-such" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clocks and Such
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocks and Such">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#power-profiles-nvpmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Profiles: nvpmodel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-and-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi and Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Devices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intel-realsense-d400-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intel Realsense D400 Series
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources-and-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources and Drivers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/rospberry_pi_zero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Zero W
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA and GPGPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ubiquiti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ubiquiti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ublox_f9p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: ZED-F9P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/c94_m8p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: C94-M8P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/asus_xtion_pro_live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ASUS Xtion Pro Live
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/intel_rs_d400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intel RealSense D4xx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lithium-Polymer Batteries (Li-Po)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/charging_lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Battery Charger Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/design_propulsion_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Designing a Propulsion System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ceres_solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro to Ceres Solver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/install_cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenCV with CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Know-how
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/mocap_room_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mocap Room Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/ublox_read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UBLOX_read Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/airsim_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw_guides/vtol_airsim_qs_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VTOL AirSim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/getting_started_in_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/new_member_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New Lab-member Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/conference_room_schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conference Room Schedule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Startup Scripts with systemd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../headless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Headless vs Graphical Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/caedm_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CAEDM Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/debugging_ros_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugging ROS Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/env_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/qt_creator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qt Creator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/ros_command_cheat_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Command Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/setting_up_ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/syncing_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syncing Time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Vim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/vpn_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VPN Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jetpack" class="md-nav__link">
+    <span class="md-ellipsis">
+      JetPack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux4tegra-l4t" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux4Tegra (L4T)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opencv4tegra" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenCV4Tegra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-enabled-opencv" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA-Enabled OpenCV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros-melodic" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS Melodic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Computer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carrier-board-connecttech-orbitty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carrier Board: ConnectTech Orbitty
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions-start-to-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions: Start to Finish
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocks-and-such" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clocks and Such
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocks and Such">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#power-profiles-nvpmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Profiles: nvpmodel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-and-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi and Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Devices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intel-realsense-d400-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intel Realsense D400 Series
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources-and-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources and Drivers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/byu-magicc/wiki/edit/main/docs/computers/jetson.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="nvidia-jetson-tx2">NVIDIA Jetson TX2<a class="headerlink" href="#nvidia-jetson-tx2" title="Permanent link">&para;</a></h1>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>When you unbox an NVIDIA Jetson TX2, it will come pre-flashed with Linux4Tegra (27.1, at the time of this writing). However none of the libraries/tools will be installed (i.e., CUDA, cuDNN, etc). Install JetPack 4.2.x on a host machine running (vanilla) Ubuntu 18.04. (You can attempt this process on other distributions or version numbers, but there are no guarantees of a working setup. We've got it running on Ubuntu Budgie 18.04, but it is finicky.)</p>
+<h2 id="software-overview">Software Overview<a class="headerlink" href="#software-overview" title="Permanent link">&para;</a></h2>
+<h4 id="jetpack">JetPack<a class="headerlink" href="#jetpack" title="Permanent link">&para;</a></h4>
+<p>JetPack is the Jetson SDK that is installed on the Host machine to push libraries and an OS image onto the TX2.</p>
+<h4 id="linux4tegra-l4t">Linux4Tegra (L4T)<a class="headerlink" href="#linux4tegra-l4t" title="Permanent link">&para;</a></h4>
+<p>Linux with a kernel that has been patched specifically for Tegra devices.</p>
+<h4 id="opencv4tegra">OpenCV4Tegra<a class="headerlink" href="#opencv4tegra" title="Permanent link">&para;</a></h4>
+<p>A Tegra CPU-optimized closed-sourced version of OpenCV. It is not CUDA-enabled (which seems rather silly...).</p>
+<h4 id="cuda-enabled-opencv">CUDA-Enabled OpenCV<a class="headerlink" href="#cuda-enabled-opencv" title="Permanent link">&para;</a></h4>
+<p>See the installation instructions <a href="../../sw_guides/opencv/">here</a>.</p>
+<h4 id="ros-melodic">ROS Melodic<a class="headerlink" href="#ros-melodic" title="Permanent link">&para;</a></h4>
+<p>We have not had certificate issues on JetPack 4.2.x, so we recommend following the <a href="https://wiki.ros.org/melodic/Installation/Ubuntu">general install procedure on the ROS website</a>.</p>
+<p>If you are interested and/or have issues, Jetson Hacks has a nice (albeit outdated) article illustrating how to <a href="https://www.jetsonhacks.com/2018/04/27/robot-operating-system-ros-on-nvidia-jetson-tx-development-kits/">install ROS on the TX2</a>. Their <code>installROS.sh</code> script available in their <a href="https://github.com/jetsonhacks/installROSTX2">repo</a> is essentially the standard ROS installation procedure, just with an extra line that can fix supposedly messed up certificates.</p>
+<h2 id="host-computer">Host Computer<a class="headerlink" href="#host-computer" title="Permanent link">&para;</a></h2>
+<p>The host computer is the machine on which you install JetPack and which you use to flash the OS image and other libraries to the TX2. Although it is possible to run JetPack on Ubuntu 'Flavors,' e.g. Ubuntu Budgie, there are some weird quirks in the installation procedure. It is much easier if you use 'vanilla' Ubuntu 18.04 with JetPack 4.2.x.</p>
+<p><strong>The following is a legacy issue that has not been encountered on JetPack 4.2.x. We leave the instructions here for edge cases that might crop up:</strong></p>
+<p>You <strong>may</strong> find your host computer's <code>apt</code> package manager is doing weird things after you install JetPack and setup a TX2. If you find that <code>sudo apt update</code> leaves you with the following errors:</p>
+<div class="highlight"><pre><span></span><code>Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
+N:<span class="w"> </span>Skipping<span class="w"> </span>acquire<span class="w"> </span>of<span class="w"> </span>configured<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;non-free/binary-arm64/Packages&#39;</span><span class="w"> </span>as<span class="w"> </span>repository<span class="w"> </span><span class="s1">&#39;http://repository.spotify.com stable InRelease&#39;</span><span class="w"> </span>doesn<span class="s1">&#39;t support architecture &#39;</span>arm64<span class="s1">&#39;</span>
+<span class="s1">N: Skipping acquire of configured file &#39;</span>main/binary-arm64/Packages<span class="s1">&#39; as repository &#39;</span>https://desktop-download.mendeley.com/download/apt<span class="w"> </span>stable<span class="w"> </span>InRelease<span class="s1">&#39; doesn&#39;</span>t<span class="w"> </span>support<span class="w"> </span>architecture<span class="w"> </span><span class="s1">&#39;arm64&#39;</span>
+E:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>fetch<span class="w"> </span>http://us.archive.ubuntu.com/ubuntu/dists/xenial/main/binary-arm64/Packages<span class="w">  </span><span class="m">404</span><span class="w">  </span>Not<span class="w"> </span>Found<span class="w"> </span><span class="o">[</span>IP:<span class="w"> </span><span class="m">91</span>.189.91.26<span class="w"> </span><span class="m">80</span><span class="o">]</span>
+E:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>fetch<span class="w"> </span>http://us.archive.ubuntu.com/ubuntu/dists/xenial-updates/main/binary-arm64/Packages<span class="w">  </span><span class="m">404</span><span class="w">  </span>Not<span class="w"> </span>Found<span class="w"> </span><span class="o">[</span>IP:<span class="w"> </span><span class="m">91</span>.189.91.26<span class="w"> </span><span class="m">80</span><span class="o">]</span>
+E:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>fetch<span class="w"> </span>http://us.archive.ubuntu.com/ubuntu/dists/xenial-backports/main/binary-arm64/Packages<span class="w">  </span><span class="m">404</span><span class="w">  </span>Not<span class="w"> </span>Found<span class="w"> </span><span class="o">[</span>IP:<span class="w"> </span><span class="m">91</span>.189.91.26<span class="w"> </span><span class="m">80</span><span class="o">]</span>
+E:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>fetch<span class="w"> </span>http://security.ubuntu.com/ubuntu/dists/xenial-security/main/binary-arm64/Packages<span class="w">  </span><span class="m">404</span><span class="w">  </span>Not<span class="w"> </span>Found<span class="w"> </span><span class="o">[</span>IP:<span class="w"> </span><span class="m">91</span>.189.88.152<span class="w"> </span><span class="m">80</span><span class="o">]</span>
+E:<span class="w"> </span>Some<span class="w"> </span>index<span class="w"> </span>files<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>download.<span class="w"> </span>They<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>ignored,<span class="w"> </span>or<span class="w"> </span>old<span class="w"> </span>ones<span class="w"> </span>used<span class="w"> </span>instead.
+</code></pre></div>
+<p>then the following workaround (found <a href="https://devtalk.nvidia.com/default/topic/1004601/jetson-tx2/after-installing-jetpack3-0-host-computer-is-not-able-to-apt-get-update/">here</a>) can be applied. Essentially, it seems that the installation of JetPack has opened <code>apt</code> to looking for some <strong>arm64</strong> packages. However, your host machine is (likely) an <strong>x86_64</strong> (AKA, <strong>amd64</strong>) architecture. To disable <code>apt</code> from looking for <strong>arm64</strong> versions of standard Ubuntu packages, edit the <code>/etc/apt/sources.list</code> (and possibly others in the <code>/etc/apt/sources.list.d</code> directory) to be limited to <strong>amd64</strong> as follows:</p>
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span><span class="o">[</span><span class="nv">arch</span><span class="o">=</span>amd64<span class="o">]</span><span class="w"> </span>&lt;url&gt;
+</code></pre></div>
+<h2 id="carrier-board-connecttech-orbitty">Carrier Board: ConnectTech Orbitty<a class="headerlink" href="#carrier-board-connecttech-orbitty" title="Permanent link">&para;</a></h2>
+<p>The Orbitty is fully compatible with both the TX1 and the TX2. See the compatibility report <a href="https://connecttech.com/resource-center/kdb344-cti-nvidia-jetson-carrier-board-tx2-tx1-compatibility/">here</a>.</p>
+<p>To use the Orbitty with the TX2, you will have to install COnnectTech Inc's (CTI) board support package (BSP), which is called <a href="https://connecttech.com/resource-center/cti-l4t-nvidia-jetson-board-support-package-release-notes/">CTI-L4T</a>. <em>&larr; Read the whole thing! It has links to answer questions.</em> At the time of this writing, CTI-L4T-V126 has been installed on the TX2/Orbitty successfully. Note that upon installing the BSP for your specific carrier board, the TX2 will not boot on other carrier boards, including the dev kit.</p>
+<p>To install CTI-L4T, you can follow the <a href="https://connecttech.com/resource-center/kdb373/">instructions</a>, or walk through the steps laid out in the next subsection. You can read through the flow on the instructions web-page, but we have extensively tested the steps in this document, so probably just follow them. The installation steps below have been completed successfully using an Ubuntu 18.04 x86_64 host machine. To then install CUDA and the other packages that JetPack normally installs on the target Jetson TX2, run the Nvidia SDKManager again. On the <em>STEP 01: Development Environment</em> screen, uncheck "Host Machine" and change "Target Hardware" to "Jetson TX2 (P3310)," or whatever your applicable hardware is. The next screen is <em>STEP 02: Details and License</em>. Under <strong>Target Components</strong>, uncheck <strong>Jetson OS</strong>. This will prevent JetPack from overwriting the BSP changes, while still allowing JetPack to actually push CTI-L4T and any other components (like CUDA) under the <strong>Jetson SDK components</strong> section over to the TX2 device.</p>
+<p>Some have asked why we uncheck "Host Machine". It just installs a bunch of software (CUDA, Computer Vision {opencv?}, &amp; Developer Tools) that you probably do not need on your host machine. Their versions of CUDA and OpenCV probably are not the ones you want (see our versions: <a href="../../sw_guides/install_cuda/">CUDA</a>, <a href="../../sw_guides/opencv/">OpenCV</a>), and I would venture to bet you are not developing for Nvidia. If you are still curious, Google what exact software and their versions are included. IMHO, if I do not need it to successfully install software on the TX2, I do not need their automated versions clogging up my host machine resources with background processes. and stomping on my own carefully installed versions of libraries.</p>
+<h2 id="instructions-start-to-finish">Instructions: Start to Finish<a class="headerlink" href="#instructions-start-to-finish" title="Permanent link">&para;</a></h2>
+<p>If you have the Jetson TX2 on a Developer Kit, you will need a T-10H Security Torx screw bit to remove the TX2 from the dev kit (or a small flat head, just do not bend the screwdriver).</p>
+<ol>
+<li>
+<p>Connect the TX2 to the Orbitty.</p>
+</li>
+<li>
+<p>Install the dependencies for the Nvidia SDK Manager: <code>sudo apt install libgconf-2-4</code></p>
+</li>
+<li>
+<p>Download the <a href="https://developer.nvidia.com/embedded/jetpack">Nvidia SDK Manager</a>. This will allow you to select and download your targeted version of JetPack (e.g. 4.2.2).</p>
+</li>
+<li>
+<p>Download the <a href="https://connecttech.com/resource-center/l4t-board-support-packages/">Orbitty CTI-L4T BSP</a> (e.g. CTI-L4T-V126.tgz). Make sure that the BSP from CTI plays nicely with your chosen JetPack from NVIDIA. For example, JetPack 4.2.2 ships L4T 32.2.1 for the TX2, so get the CTI-L4T BSP targeting that release of L4T, and make sure it supports the Orbitty. Some CTI-L4T releases only support a small subset of CTI carrier boards. Check compatibility using the release notes and download page links above. More information is available <a href="https://connecttech.com/support/resource-center/nvidia-jetson-tx2-tx1-product-support/">here</a>.</p>
+</li>
+<li>
+<p>Run SDKManager, but only to download the files</p>
+</li>
+<li>Under <em>STEP 01: Development Environment</em><ul>
+<li>Uncheck "Host Machine"</li>
+<li>Select your correct "Target Hardware" (e.g. "Jetson TX2 (P3310)")</li>
+<li>Select your target JetPack Version (e.g. JetPack 4.2.2)</li>
+</ul>
+</li>
+<li>
+<p>Under <em>STEP 02: Details and License</em></p>
+<ul>
+<li>Leave "Jetson OS" checked</li>
+<li>Uncheck "Jetson SDK Components" &amp; "Additional SDKs"</li>
+<li>Under the "Download &amp; Install Options" drop-down menu, change both "Download folder" and "Target HW image folder" options to easily accessible, and JetPack version unique, locations (e.g. <code>~/jetson422/sdkm_downloads</code> and <code>~/jetson422/nvidia_sdk</code>)</li>
+<li>Accept the Terms &amp; Conditions</li>
+<li>Continue to Step 03</li>
+<li>After the download completes, the installation screen will appear (where it asks how the TX2 is connected)</li>
+<li>Cancel the JetPack setup here</li>
+</ul>
+</li>
+<li>
+<p>Make sure the TX2 is plugged into power</p>
+</li>
+<li>
+<p>Place the TX2 in recovery mode</p>
+<ul>
+<li>Connect a micro usb 2.0 cable between the Orbitty Carrier board and your Host machine</li>
+<li>Press &amp; hold the "Recovery" button</li>
+<li>Press &amp; release the "Reset" button</li>
+<li>Release the "Recovery" button</li>
+</ul>
+</li>
+<li>
+<p>Now that JetPack has pulled the relevant OS files to your local host machine, we need to patch the L4T kernel with driver support for the Orbitty carrier board using the CTI-L4T-V1xx BSP. The instructions are found <a href="https://connecttech.com/resource-center/cti-l4t-nvidia-jetson-board-support-package-release-notes/#bkb-h8">here</a>. You <strong>must</strong> follow the <strong>Manual Flashing</strong> instructions because the automatic script fails to flash the image (most times, but you can try if you like). Now, read the bright-orange "Attention box." These instructions will actually build the patched OS image and flash it to the internal eMMC on the TX2.</p>
+<p>Attention:
+When you are ready to call the <code>./flash.sh &lt;profile&gt; mmcblk0p1</code> command as instructed in the <strong>Manual Flashing</strong> commands from the CTI instruction page, as of JetPack 4.2.2, you first need to run <code>sudo ./flash.sh ./cti/tx2/orbitty mmcblk0p1</code>. This will likely also fail, stalling with print statements in the terminal similar to:
+<div class="highlight"><pre><span></span><code>...
+<span class="o">[</span><span class="w">   </span><span class="m">4</span>.3455<span class="w"> </span><span class="o">]</span><span class="w"> </span>Boot<span class="w"> </span>Rom<span class="w"> </span>communication
+<span class="o">[</span><span class="w">   </span><span class="m">4</span>.3463<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--chip<span class="w"> </span>0x18<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rcm<span class="w"> </span>rcm_list_signed.xml
+<span class="o">[</span><span class="w">   </span><span class="m">4</span>.3469<span class="w"> </span><span class="o">]</span><span class="w"> </span>BootRom<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running
+<span class="o">[</span><span class="w">   </span><span class="m">9</span>.6155<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w">  </span><span class="m">10</span>.6191<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--isapplet
+<span class="o">[</span><span class="w"> </span><span class="m">1020</span>.5594<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w"> </span><span class="m">1020</span>.5768<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegradevflash_v2<span class="w"> </span>--iscpubl
+<span class="o">[</span><span class="w"> </span><span class="m">1020</span>.5780<span class="w"> </span><span class="o">]</span><span class="w"> </span>CPU<span class="w"> </span>Bootloader<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running<span class="w"> </span>on<span class="w"> </span>device.
+<span class="o">[</span><span class="w"> </span><span class="m">2036</span>.3675<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w"> </span><span class="m">2037</span>.3711<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--isapplet
+<span class="o">[</span><span class="w"> </span><span class="m">3052</span>.1754<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w"> </span><span class="m">3052</span>.1779<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegradevflash_v2<span class="w"> </span>--iscpubl
+<span class="o">[</span><span class="w"> </span><span class="m">3052</span>.1801<span class="w"> </span><span class="o">]</span><span class="w"> </span>CPU<span class="w"> </span>Bootloader<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running<span class="w"> </span>on<span class="w"> </span>device.
+<span class="o">[</span><span class="w"> </span><span class="m">4067</span>.9835<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w"> </span><span class="m">4068</span>.9871<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--isapplet
+...
+</code></pre></div>
+(If it does not fail/stall, you will see something like the following, and you may skip the rest of this block):
+<div class="highlight"><pre><span></span><code>...
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.3570<span class="w"> </span><span class="o">]</span><span class="w"> </span>Copying<span class="w"> </span>signatures
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.3576<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrahost_v2<span class="w"> </span>--chip<span class="w"> </span>0x18<span class="w"> </span><span class="m">0</span><span class="w"> </span>--partitionlayout<span class="w"> </span>flash.xml.bin<span class="w"> </span>--updatesig<span class="w"> </span>images_list_signed.xml
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.4085<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.4086<span class="w"> </span><span class="o">]</span><span class="w"> </span>Boot<span class="w"> </span>Rom<span class="w"> </span>communication
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.4097<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--chip<span class="w"> </span>0x18<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rcm<span class="w"> </span>rcm_list_signed.xml
+<span class="o">[</span><span class="w">   </span><span class="m">0</span>.4104<span class="w"> </span><span class="o">]</span><span class="w"> </span>BootRom<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running
+<span class="o">[</span><span class="w">   </span><span class="m">5</span>.4682<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4715<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--isapplet
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4736<span class="w"> </span><span class="o">]</span><span class="w"> </span>Applet<span class="w"> </span>version<span class="w"> </span><span class="m">01</span>.00.0000
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4761<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4762<span class="w"> </span><span class="o">]</span><span class="w"> </span>Sending<span class="w"> </span>BCTs
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4784<span class="w"> </span><span class="o">]</span><span class="w"> </span>tegrarcm_v2<span class="w"> </span>--download<span class="w"> </span>bct_bootrom<span class="w"> </span>br_bct_BR.bct<span class="w"> </span>--download<span class="w"> </span>bct_mb1<span class="w"> </span>mb1_bct_MB1_sigheader.bct.encrypt
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4792<span class="w"> </span><span class="o">]</span><span class="w"> </span>Applet<span class="w"> </span>version<span class="w"> </span><span class="m">01</span>.00.0000
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4814<span class="w"> </span><span class="o">]</span><span class="w"> </span>Sending<span class="w"> </span>bct_bootrom
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4815<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">[</span>................................................<span class="o">]</span><span class="w"> </span><span class="m">100</span>%
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4830<span class="w"> </span><span class="o">]</span><span class="w"> </span>Sending<span class="w"> </span>bct_mb1
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.4841<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">[</span>................................................<span class="o">]</span><span class="w"> </span><span class="m">100</span>%
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.5002<span class="w"> </span><span class="o">]</span>
+<span class="o">[</span><span class="w">   </span><span class="m">6</span>.5002<span class="w"> </span><span class="o">]</span><span class="w"> </span>Generating<span class="w"> </span>blob
+...
+</code></pre></div>
+Obviously you do not have to wait 4000 seconds to know it has stalled; I ran it this long for illustration. Best practice is to wait at least 90 seconds before determining it has stalled. If it does stall at the <code>tegrarcm_v2 --isapplet</code> print statement, check the printout history for something like:
+<div class="highlight"><pre><span></span><code>...
+<span class="m">4354</span>:<span class="w"> </span>RAW:<span class="w">     </span><span class="m">6275072</span><span class="o">(</span><span class="w">   </span><span class="m">1532</span><span class="w"> </span>blks<span class="o">)</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w">  </span><span class="m">4231167028</span>:6275084
+<span class="m">4355</span>:<span class="w"> </span>SKP:<span class="w">        </span><span class="m">4096</span><span class="o">(</span><span class="w">      </span><span class="m">1</span><span class="w"> </span>blks<span class="o">)</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w">  </span><span class="m">4237442112</span>:12
+<span class="m">4356</span>:<span class="w"> </span>RAW:<span class="w">       </span><span class="m">81920</span><span class="o">(</span><span class="w">     </span><span class="m">20</span><span class="w"> </span>blks<span class="o">)</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w">  </span><span class="m">4237442124</span>:81932
+<span class="m">4357</span>:<span class="w"> </span>SKP:<span class="w">  </span><span class="m">1935671296</span><span class="o">(</span><span class="w"> </span><span class="m">472576</span><span class="w"> </span>blks<span class="o">)</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w">  </span><span class="m">4237524056</span>:12
+--<span class="w"> </span>Total:<span class="w"> </span>---------------------------------------------------
+<span class="m">4358</span><span class="w"> </span>CHUNK<span class="w"> </span><span class="m">30064771072</span><span class="o">(</span><span class="m">7340032</span><span class="w"> </span>blks<span class="o">)</span><span class="w"> </span><span class="o">==</span>&gt;<span class="w">  </span><span class="m">4237524068</span><span class="o">(</span><span class="m">1034539</span><span class="w"> </span>blks<span class="o">)</span>
+
+<span class="k">done</span>.
+system.img<span class="w"> </span>built<span class="w"> </span>successfully.
+...
+</code></pre></div>
+If you see similar lines, you may quit the stalled command with <code>CTRL + C</code>. (If you do not see them, I hope you said your morning prayers. Also, go get some help.) Next, run <code>sudo ./flash.sh -r ./cti/tx2/orbitty mmcblk0p1</code>. Note the <code>-r</code>! It is different than above. This will use the pre-built image from the previous install attempt, instead of building a new one. This allows the <code>flash.sh</code> script to start sending the image before the pseudo-network between the host and TX2 times out. If it fails to flash, on the Orbitty, try: (a) press &amp; hold the "Recovery" button, (b) press &amp; release the "Reset" button &copy; release the "Recovery" button a maximum of 0.3 seconds before pressing enter to run the flash command in the terminal. Because <code>sudo</code> is required for the flash command, first run a generic <code>sudo update</code> so the <code>sudo ./flash.sh ...</code> command does not pause waiting for your admin password. This also helps the pseudo-network timing.</p>
+</li>
+<li>
+<p>Now that Linux is actually flashed on the TX2, unplug the USB cable, press the "Reset" button on the Orbitty, and the TX2 should boot up into the Linux config screen. Accept the license, select a username, computer hostname, and password, and finish the setup process.</p>
+<p>Note:
+It may appear to hang during this process (specifically at a "waiting for unattended upgrade..." dialog box). Leave it be for at least an hour, if not overnight. It is not actually frozen. If you want a way to avoid waiting, you need to turn off "unattended upgrades" by patching a file in the <code>rootfs/etc/apt</code> directory in the Jetson system image source files on the host system before running the flash utility on the command line the final time. If you do not know what that means, just be patient and let it flash normally. You can really screw up your image if you do not know what your doing in this process.</p>
+</li>
+<li>
+<p>Reboot the TX2.</p>
+</li>
+<li>
+<p>Plug the micro USB cable back into the TX2.</p>
+</li>
+<li>
+<p>Start "SDK Manager" again, on the host machine.</p>
+</li>
+<li>
+<p>Make sure not to overwrite the OS image on the <em>STEP 02</em> screen by un-checking <strong>Jetson OS</strong>, but leave the <strong>Jetson SDK components</strong> &amp; <strong>Additional SDKs</strong> checked.</p>
+</li>
+<li>
+<p>Press <em>Continue to STEP 03</em>, and follow the on screen instructions, entering first the <em>Host</em> machine password, then the username and password you configured for the TX2. JetPack should start copying the relevant packages (CUDA, etc) over to the TX2 and installing them. This can take a while. Go get a coffee.</p>
+<p>Note:
+If it fails, shut everything off, disconnect power, and boot everything back up, and try the SDKs again. It has happened once that I needed to re-flash the OS image a second time before the SDKs would successfully install.</p>
+</li>
+<li>
+<p>Make it "Headless" to save resources when flying. Follow the instructions <a href="../headless/">here</a>.</p>
+</li>
+<li>
+<p>You're all done!</p>
+</li>
+</ol>
+<p><img alt="coming together" src="../assets/coming_together.gif" /></p>
+<h2 id="clocks-and-such">Clocks and Such<a class="headerlink" href="#clocks-and-such" title="Permanent link">&para;</a></h2>
+<h4 id="power-profiles-nvpmodel">Power Profiles: <code>nvpmodel</code><a class="headerlink" href="#power-profiles-nvpmodel" title="Permanent link">&para;</a></h4>
+<p>The Jetson TX2 has 5 power profiles that can be set with the following. You may also want to include the <code>jetson_clocks</code> command:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>nvpmodel<span class="w"> </span>-m<span class="w"> </span><span class="o">[</span>mode<span class="o">]</span>
+$<span class="w"> </span>sudo<span class="w"> </span>jetson_clocks
+</code></pre></div>
+<p>To see which mode is currently being used, run</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>nvpmodel<span class="w"> </span>-q
+</code></pre></div>
+<p>You will probably want the highest power mode, using all available cores on the TX2.:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>nvpmodel<span class="w"> </span>-m<span class="w"> </span><span class="m">0</span>
+$<span class="w"> </span>sudo<span class="w"> </span>jetson_clocks
+</code></pre></div>
+<p>Good info on the NVIDIA Power Model (nvpmodel): <a href="https://www.jetsonhacks.com/2017/03/25/nvpmodel-nvidia-jetson-tx2-development-kit/">JetsonHacks - nvpmodel</a>.</p>
+<p><strong>The following information is applicable to JetPack &lt;= 4.2.1, as far as I can tell. Using JetPack 4.2.2, if you set the nvpmodel once, your selected setting is persistent across a power cycle. If you are using Wi-Fi, instead of an Ubiquiti Bullet, you will still likely need to create the systemd service to turn off power saving on the Wi-Fi, but this is untested.</strong></p>
+<p>It is advantageous to run this command on boot. You can do this with a <code>systemd service</code> file. First, create a <code>jetson-max-power.sh</code> file with execute permissions. (For security, it is recommended to place it in a directory owned by root, such as <code>/etc/&lt;max_power.d&gt;/jetson-max-power.sh</code>. Personally, I just place it at <code>~/software/jetson-max-power.sh</code>.) Wherever you place the <code>*.sh</code> script, make sure the <code>ExecStart</code> line in the <code>*.service</code> file points to it.</p>
+<p>The <a href="../assets/jetson-max-power.service"><code>*.service</code></a> and <a href="../assets/jetson-max-power.sh"><code>*.sh</code></a> files are available on the <a href="https://github.com/byu-magicc/wiki/tree/main/docs/computers/assets">MAGICC GitHub</a>. Place the <code>*.service</code> file at <code>/etc/systemd/system/jetson-max-power.service</code>, and enable with <code>sudo systemctl enable jetson-max-power.service</code>.</p>
+<p>NOTE: CRITICAL
+    Be sure to fix any relevant paths in these two files before enabling the systemd service. If you have already enabled, and need to change the <code>*.service</code> file, you will need to either reboot, or run <code>sudo systemctl daemon-reload</code>.</p>
+<h2 id="wifi-and-connectivity">WiFi and Connectivity<a class="headerlink" href="#wifi-and-connectivity" title="Permanent link">&para;</a></h2>
+<p>The Jetson TX2 comes with embedded Wi-Fi/bluetooth. The dev kit comes with two antennas. The TX2 Wi-Fi can run with just 1 antenna connected to J9, which is the U.FL connector furthest from the S/N sticker. (See <a href="https://devtalk.nvidia.com/default/topic/919406/can-the-tx1-be-used-with-only-1-antenna-/">here</a>.) The other U.FL connector is for Bluetooth.</p>
+<p>If you are only going to use a Ubiquiti Bullet hard-wired to the Orbitty ethernet port (this is highly recommended for MAGICC Lab Vehicles! see <a href="https://github.com/byu-magicc/wiki-private/blob/main/lab_resources/inventory-hw.md">Lab Standard HW/SW Setup</a>), we suggest disabling the Wi-Fi in the gui, or alternatively hard-blocking the wireless card with <code>rfkill</code>.</p>
+<p>You can view the Wi-Fi RSSI/link quality with the following command (with or without the <code>watch -n 0.1</code>):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span>link
+</code></pre></div>
+<p>It has also been noted that the RF chip has a power-saving feature which could introduce lag (see <a href="https://devtalk.nvidia.com/default/topic/995819/jetson-tx1/jetson-tx1-wifi-speed-and-latency/">here</a>). It can be turned off with:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span><span class="nb">set</span><span class="w"> </span>power_save<span class="w"> </span>off<span class="w"> </span><span class="c1">#- to disable power save and reduce ping latency.</span>
+</code></pre></div>
+<p>You can add this line to the <code>.sh</code> script called by <code>jetson-max-power.service</code>. If you downloaded the file available on the GitLab server, it is already included. You're welcome. :)</p>
+<!-- Links -->
+<h2 id="usb-devices">USB Devices<a class="headerlink" href="#usb-devices" title="Permanent link">&para;</a></h2>
+<p>Note! <strong>Update</strong>
+    As of JetPack 4.2.x, the following drivers are all included in the kernel by default. This information is left here for legacy use cases.</p>
+<p><strong>Original Content</strong></p>
+<p>It is likely that your USB devices do not work correctly out of the box with the TX2. This is especially the case for a flip32 board for ROSflight. To fix this you need to build some drivers in with the kernel. This process is pretty straight-forward.</p>
+<p>To build the kernel with additional USB drivers, follow the instructions and video found <a href="https://www.jetsonhacks.com/2017/07/31/build-kernel-ttyacm-module-nvidia-jetson-tx2/">here</a>. This video shows the ACM module being added, however there are a few additional drivers you will likely require. These include:
+- USB Winchiphead CH341 Single Port Serial Driver
+- USB Modem (CDC ACM) support
+- USB CP210x family of UART Bridge Controllers</p>
+<p>After following the instructions to add these drivers, reboot your TX2 and your USB devices should show up in /dev/ttyUSB? or /dev/ttyACM? as you would expect.</p>
+<p>Update: With Jetpack 3.2 and L4T 28.2, ttyACM devices appear to work out of the box, but you may still need to follow the above instructions if your device doesn't work. Also, please note that there is an updated video for <a href="https://www.jetsonhacks.com/2018/03/22/build-kernel-modules-nvidia-jetson-tx2-2/">building the kernel for L4T 28.2</a>.</p>
+<h2 id="cloning">Cloning<a class="headerlink" href="#cloning" title="Permanent link">&para;</a></h2>
+<p>Warning!
+    The following commands and information has not been tested on L4T 32.x.x as installed by using the JetPack 4.2.x software. Use at your own peril.</p>
+<p>The following commands only clone the OS partition, and do not affect the bootloader, so it is recommended that you first set up your new TX2 with the above instructions if you are going to be using an Orbity or other carrier board. Once both TX2's have the same bootloader, you can follow these steps for cloning derived from <a href="https://elinux.org/Jetson/TX2_Cloning">this guide</a>.</p>
+<p>First, make sure you have at least 50GB of free space on the volume where you have Jetpack installed. cd into the directory containing the L4T installation package on the host PC. The command below will save the TX2's eMMC image to the specified file on the host.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>./flash.sh<span class="w"> </span>-r<span class="w"> </span>-k<span class="w"> </span>APP<span class="w"> </span>-G<span class="w"> </span>backup.img<span class="w"> </span>jetson-tx2<span class="w"> </span>mmcblk0p1
+</code></pre></div>
+<p>In this case, we call the file backup.img, so the same flash.sh script can be re-used to format and flash other Jetson's with the image. Copy the .raw file which containts the image of the OS partition to where the flashing script can find it. You may want to backup the vanilla image already in the bootloader directory.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>backup.img.raw<span class="w"> </span>bootloader/system.img
+</code></pre></div>
+<p>The recommended way to restore multiple units with different serial numbers is to save the image above as "system.img" and use the head L4T flashing script, flash.sh, with the -r option (to reuse your backed-up system.img without rebuilding the vanilla image from scratch):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>./flash.sh<span class="w"> </span>-r<span class="w"> </span>-k<span class="w"> </span>APP<span class="w"> </span>jetson-tx2<span class="w"> </span>mmcblk0p1
+</code></pre></div>
+<h2 id="intel-realsense-d400-series">Intel Realsense D400 Series<a class="headerlink" href="#intel-realsense-d400-series" title="Permanent link">&para;</a></h2>
+<p>Below are some guides to help you get started using the Intel Realsense D400 series cameras on the TX2. (Some of this may be out-of-date, likely targeting L4T 28.x.x and below):</p>
+<ul>
+<li>First and foremost, our own wiki page: <a href="../../hw_guides/intel_rs_d400/">Intel RealSense D400 Camera</a></li>
+<li><a href="https://www.jetsonhacks.com/2017/03/26/intel-realsense-camera-installation-nvidia-jetson-tx2/">Intel RealSense Camera Installation – NVIDIA Jetson TX2</a></li>
+<li><a href="https://github.com/jetsonhacks/buildLibrealsense2TX">Github jetsonhacks/buildLibrealsense2TX</a></li>
+<li><a href="https://www.jetsonhacks.com/2017/03/29/intel-realsense-package-for-ros-on-nvidia-jetson-tx2/">Intel RealSense Package for ROS on NVIDIA Jetson TX2</a></li>
+</ul>
+<h2 id="sources-and-drivers">Sources and Drivers<a class="headerlink" href="#sources-and-drivers" title="Permanent link">&para;</a></h2>
+<p>For JetPack &gt;=4.2.x:
+Sources: https://developer.nvidia.com/embedded/dlc/l4t-jetson-driver-package-32-1-JAX-TX2
+Drivers: https://developer.nvidia.com/embedded/dlc/l4t-sources-32-1-JAX-TX2</p>
+<p>For JetPack &lt;4.2.x:
+Sources: https://developer.nvidia.com/embedded/dlc/l4t-jetson-driver-package-28-3-tx2
+Drivers: https://developer.nvidia.com/embedded/dlc/l4t-sources-28-3-tx2</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

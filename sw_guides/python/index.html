@@ -1,0 +1,2979 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials and guides for the MAGICC lab">
+      
+      
+        <meta name="author" content="MAGICC lab members">
+      
+      
+        <link rel="canonical" href="https://byu-magicc.github.io/wiki/sw_guides/python/">
+      
+      
+        <link rel="prev" href="../opencv/">
+      
+      
+        <link rel="next" href="../mocap_room_tutorial/">
+      
+      
+      <link rel="icon" href="../../assets/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Python Know-how - MAGICC Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-know-how" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MAGICC Wiki" class="md-header__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAGICC Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python Know-how
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../safety/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Safety
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ros2_tutorials/intro/" class="md-tabs__link">
+          
+  
+  
+  ROS2 Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gazebo_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Gazebo Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../control_tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Control Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/pixhawk/" class="md-tabs__link">
+          
+  
+  
+  Hardware Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ceres_solver/" class="md-tabs__link">
+          
+  
+  
+  Software Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../administration/getting_started_in_research/" class="md-tabs__link">
+          
+  
+  
+  Administration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computers/systemd/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MAGICC Wiki" class="md-nav__button md-logo" aria-label="MAGICC Wiki" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    MAGICC Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Introduction to ROS2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/starting_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Starting Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/node_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Getting Info About Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/1_L1-3_node_running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Running Nodes: Listener and Talker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/2_L1-3_turtlesim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Turtlesim Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: The ROS Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/launch_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/3_L4-5_creating_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/4_L4-5_explaining_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Launch Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/rostopic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 6: ROS2 Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/5_L6_nodes_topics_and_messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 5: Nodes, Topics and Messages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/topic_remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 7: Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 8: ROS2 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/adv_launch_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 9: Additional Launch File Syntax
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/6_L7-9_more_launch_file1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 6: More Launch File Practice 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/7_L7-9_more_launch_file2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 7: More Launch File Practice 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/8_L7-9_launch_file_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 8: Creating a Launch File with Parameters and Topic Remapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/9_L7-L9_edit_node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 9: diting Teleop Twist Joy Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/creating_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 10: Creating Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 11: Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/c%2B%2B_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12a: Nodes Based on Classes (C++)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/python_node_class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 12b: Nodes Based on Classes (Python)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/10_L10-12_draw_a_star/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 10: Draw a Star
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/11_L10-12_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 11: Display/Publish Fuel Remaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/assignments/12_L10-12_out_of_fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 12: Stop Turtlesim When Fuel Runs Out
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/multiple_machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 13: ROS2 on Multiple Machines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 14: Others
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2_tutorials/mocap/mocap_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 15: Motion Capture Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gazebo Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gazebo Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: Make a Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: Adding Plugins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_multirotor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: Make a Multirotor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_a_fixed_wing_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: Make a Fixed Wing MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/interfacing_with_gazebo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: Interfacing with Gazebo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/flying_your_mav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 3: Flying Your MAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/make_a_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 4: Make a World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/assignments/make_your_own_world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 4: Make Your Own World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gazebo_tutorials/adding_an_image_to_the_ground_plane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 5: Adding an Image to the Ground Plane
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Control Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Control Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 0: Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/p_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 1: P Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/p_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 0: P Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pd_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 2: PD Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pd_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 1: PD Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/pid_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson 3: PID Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control_tutorials/assignments/pid_turtle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment 2: PID Controller with TurtleSim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/pixhawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pixhawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson TX2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/rospberry_pi_zero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Zero W
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA and GPGPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ubiquiti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ubiquiti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/ublox_f9p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: ZED-F9P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/c94_m8p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RTK GPS: C94-M8P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/asus_xtion_pro_live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ASUS Xtion Pro Live
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/intel_rs_d400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intel RealSense D4xx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lithium-Polymer Batteries (Li-Po)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/charging_lipo_batts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Battery Charger Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hw_guides/design_propulsion_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Designing a Propulsion System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ceres_solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro to Ceres Solver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenCV with CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Python Know-how
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Know-how
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tl;dr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started with Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-virtual-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Virtual Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-and-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS and Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-sudo-h-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What does sudo -H do?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocap_room_tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mocap Room Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ublox_read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UBLOX_read Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airsim_quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airsim_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Airsim Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vtol_airsim_qs_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VTOL AirSim Quickstart Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/getting_started_in_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/new_member_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New Lab-member Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/conference_room_schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conference Room Schedule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Startup Scripts with systemd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computers/headless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Headless vs Graphical Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/caedm_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CAEDM Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/debugging_ros_nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugging ROS Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/env_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/qt_creator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qt Creator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/ros_command_cheat_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Command Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/setting_up_ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up ssh
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/syncing_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syncing Time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/using_vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Vim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/vpn_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VPN Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tl;dr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started with Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-virtual-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Virtual Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-and-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS and Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-sudo-h-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What does sudo -H do?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/byu-magicc/wiki/edit/main/docs/sw_guides/python.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="python-know-how">Python Know-how<a class="headerlink" href="#python-know-how" title="Permanent link">&para;</a></h1>
+<p>Python is an excellent research and development tool because of its readability, intuitive syntax, and interactive ability. In addition, there is a plethora of popular 3<sup>rd</sup> party Python packages available for your procurement -- particularly for algorithm development and numerical computation.</p>
+<h2 id="tldr">tl;dr<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use Python 3 when you can, but note that doing this is not really an option when creating ROS packages</li>
+<li>ROS uses Python 2.7, ROS2 will use Python 3</li>
+<li>Always use <code>pip</code> to install Python packages -- <strong>never use <code>sudo apt install ...</code>!</strong> (can make for messy paths)</li>
+<li>It is preferable to use <code>pip install &lt;package&gt; --user</code> over <code>sudo -H pip install &lt;package&gt;</code></li>
+<li><strong>Do not</strong> install <code>anaconda</code>. It will probably make your life miserable (especially as a ROS user). Anaconda is nice for users who use Windows or who just want to start coding without learning about the Python ecosystem.</li>
+<li>Although you will often hear/read people refer to Python and <code>pip</code> without a version number, it is important to be aware of your system configuration and be specific when necessary. Always use the appropriate versions: <code>python3 main.py</code> or <code>pip3 install ... --user</code>.</li>
+<li>Virtual environments are good. But you probably won't see them used much in our ROS/research world.</li>
+</ul>
+<h2 id="python-versions">Python Versions<a class="headerlink" href="#python-versions" title="Permanent link">&para;</a></h2>
+<p>At the time of this writing, there are commonly two versions of Python in use: versions <code>2.7.14</code> and <code>3.6.4</code>. This has historically (and probably currently) caused much heartache for seasoned and beginning Python developers alike. Further, Python does not really help itself with its use of <code>PYTHONPATH</code> and its package management. Because of this, it is important to be aware of the tools and commands for installing packages into their proper place. The aim of this article is to document what we've learned about best practices with using different Python versions on the same machine.</p>
+<h2 id="getting-started-with-python">Getting Started with Python<a class="headerlink" href="#getting-started-with-python" title="Permanent link">&para;</a></h2>
+<p>On an Ubuntu 16.04 machine, system level <code>python</code> and <code>python3</code> will already be installed on your machine. Use <code>which</code> to see the path of the binary (i.e., <code>which python3</code>).</p>
+<p>Install <code>pip</code> with</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python-pip<span class="w"> </span><span class="c1"># or python3-pip</span>
+</code></pre></div>
+<p><strong>Attention:</strong> This is the only exception for installing a Python thing with <code>apt</code></p>
+<p>Install <code>ipython</code> (interactive Python):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipython<span class="w"> </span>--user
+</code></pre></div>
+<p>Now, instead of using the <code>python</code> interpreter, you may wish to use the <code>ipython</code> interpreter. It has colors, autocomplete, history, and you can exit with just <code>exit</code> instead of <code>exit()</code>. Additionally, you can load a file and stop at the end of it with <code>ipython -i main.py</code>. This allows you to interact with the program state (i.e., variables, functions, etc) after it has run.</p>
+<h2 id="python-virtual-environments">Python Virtual Environments<a class="headerlink" href="#python-virtual-environments" title="Permanent link">&para;</a></h2>
+<p>Because <code>pip</code> installs packages for all to see, it can become a hassle to deal with code that needs a specific version of a package -- especially if it is different than your system-wide install. Additionally, it can be unwieldy to have to communicate all your dependencies and their versions to run your package. To combat this, we use Python virtual environments, or <code>virtualenv</code>s for short. Using a <code>virtualenv</code> with <code>pip</code> allows one to create a <code>requirements.txt</code> file that can be easily installed into a new environment.</p>
+<p><strong>Attention:</strong> A lot of times, this could be overkill for your project. Virtual environments are the right way to do it, but they may not help you graduate any sooner. Virtual environments are critical in the development/release life cycle of software as it helps keep your development and production environments the same. This fits very well with webservers, but not as well with robots and ROS.</p>
+<p><strong>Note:</strong> that there are many different tools in the Python community (<code>virtualenv</code>, <code>pyenv</code>, <code>venv</code>, <code>pipenv</code>, etc). We limit this discussion to what seems to be the standard across the Python community: <code>virtualenv</code>. For a great executive summary, see <a href="https://stackoverflow.com/a/41573588/2392520">SO: What is the difference between venv, virtualenvwrapper, etc?</a>.</p>
+<p>To setup a <code>virtualenv</code>, we will install <code>virtualenvwrapper</code>, which contains a nice set of CLI extensions for the <code>virtualenv</code> package. For Python 2.7, the installation would look like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenvwrapper<span class="w"> </span>--user
+</code></pre></div>
+<p>Then, add the following to your <code>~/.bashrc</code> file and resource (<code>. ~/.bashrc</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
+<span class="nb">export</span><span class="w"> </span><span class="nv">VIRTUALENVWRAPPER_PYTHON</span><span class="o">=</span>/usr/bin/python<span class="w"> </span><span class="c1"># python2 binary</span>
+<span class="nb">source</span><span class="w"> </span>/home/plusk01/.local/bin/virtualenvwrapper.sh<span class="w"> </span><span class="c1"># python2 install</span>
+</code></pre></div>
+<p>You can ensure that the paths are correct with commands like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>which<span class="w"> </span>python
+$<span class="w"> </span>locate<span class="w"> </span>virtualenvwrapper<span class="w"> </span><span class="c1"># you may need to run sudo updatedb to refresh the file database</span>
+</code></pre></div>
+<p>Now that everything is setup, run <code>pip list</code>. You should see a fair amount of packages listed. If the <code>virtualenv</code> is working correctly, those will be hidden once we create a new environment:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkvirtualenv<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="c1"># create an environment called &#39;test&#39; &amp;&amp; automatically activates it</span>
+<span class="o">(</span><span class="nb">test</span><span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>list<span class="w"> </span><span class="c1"># should show maybe 2 or 3 packages</span>
+</code></pre></div>
+<p>Notice two things:</p>
+<ol>
+<li>There should be only 2 or 3 packages from <code>pip list</code> (unless you have ROS on your system, see below)</li>
+<li>The name of your <code>virtualenv</code> is prepended to your bash prompt (i.e., <code>(test)</code>).</li>
+</ol>
+<p>To exit your <code>virtualenv</code>, use <code>deactivate</code>. To activate it again, run <code>workon test</code> (tab complete).</p>
+<h2 id="ros-and-python">ROS and Python<a class="headerlink" href="#ros-and-python" title="Permanent link">&para;</a></h2>
+<p>Because ROS pollutes the global Python namespace by adding its path to the <code>PYTHONPATH</code> (you know that line you add to your <code>~/.bashrc</code> when you install ROS? that is what does it), you will likely see a whole bunch of ROS specific Python packages when you <code>pip list</code> in your <code>virtualenv</code>. This is a shame, but most likely won't actually hurt anything.</p>
+<p>However, if you would like to gain the satisfaction of having a clean <code>pip list</code>, we can add a hook to remove ROS from the <code>PYTHONPATH</code> (or just comment out the ROS line in your <code>~/.bashrc</code>):</p>
+<ol>
+<li>
+<p>Add the following to the <code>~/.virtualenvs/test/bin/postactivate</code> hook:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH_TMP</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PYTHONPATH</span><span class="sb">`</span>
+<span class="nb">unset</span><span class="w"> </span>PYTHONPATH
+</code></pre></div>
+</li>
+<li>
+<p>Add the following to the <code>~/.virtualenvs/test/bin/postdeactivate</code> hook:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PYTHONPATH_TMP</span><span class="sb">`</span>
+<span class="nb">unset</span><span class="w"> </span>PYTHONPATH_TMP
+</code></pre></div>
+</li>
+</ol>
+<h2 id="what-does-sudo-h-do">What does <code>sudo -H</code> do?<a class="headerlink" href="#what-does-sudo-h-do" title="Permanent link">&para;</a></h2>
+<p>It changes the home directory to be the current user, as opposed to <code>/root</code>. From the manual:</p>
+<div class="highlight"><pre><span></span><code><span class="w">     </span>-H,<span class="w"> </span>--set-home
+<span class="w">                 </span>Request<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>security<span class="w"> </span>policy<span class="w"> </span><span class="nb">set</span><span class="w"> </span>the<span class="w"> </span>HOME<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>home<span class="w"> </span>directory<span class="w"> </span>specified<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>target<span class="w"> </span>user<span class="err">&#39;</span>s<span class="w"> </span>pass‐
+<span class="w">                 </span>word<span class="w"> </span>database<span class="w"> </span>entry.<span class="w">  </span>Depending<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>policy,<span class="w"> </span>this<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>behavior.
+</code></pre></div>
+<p>So, for example:</p>
+<div class="highlight"><pre><span></span><code>user@hostname:~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span><span class="w"> </span><span class="nv">$USER</span>
+/home/user<span class="w"> </span>user
+user@hostname:~$<span class="w"> </span>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo $HOME $USER&#39;</span>
+/home/user<span class="w"> </span>root
+user@hostname:~$<span class="w"> </span>sudo<span class="w"> </span>-H<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo $HOME $USER&#39;</span>
+/root<span class="w"> </span>root
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
