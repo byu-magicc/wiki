@@ -24,61 +24,58 @@
 
 ## Data Collecting with ROS
 
-1. Download the [vrpn_client_ros](https://gitlab.magiccvs.byu.edu/lab/vrpn_client_ros2.git) package.
+1. Install the [vrpn_mocap package](https://index.ros.org/r/vrpn_mocap/) following the instructions in the link.
 
-In the `src` of your workspace, run:
+2. Source your `ros2` installation.
 ```bash
- git clone https://gitlab.magiccvs.byu.edu/lab/vrpn_client_ros2.git
+source /opt/ros/<ros-distro>/setup.bash
 ```
 
-And in your workspace, build the package:
+3. Run the `vrpn_mocap` node.
 ```bash
- colcon build
+ ros2 launch vrpn_mocap client.launch.yaml server:=<IP-of-mocap-machine> port:=3883 
 ```
 
-2. Run the `vrpn_client_ros` node.
-```bash
- ros2 run vrpn_client_ros vrpn_client_node 
-```
-
-```
-[INFO] [1726270601.321879825] [vrpn_client_node]: Connecting to VRPN server at localhost:3883
-[INFO] [1726270602.324711875] [vrpn_client_node]: Connection established
-```
+    ```bash
+    INFO] [launch]: All log files can be found below /home/jacob/.ros/log/2025-07-25-11-07-10-205177-ros-box.jacob-1292937
+    [INFO] [launch]: Default logging verbosity is set to INFO
+    [INFO] [client_node-1]: process started with pid [1292938]
+    [client_node-1] [INFO] [1753463231.307355248] [vrpn_mocap.vrpn_mocap_client_node]: Created new tracker ROScopter
+    [client_node-1] [INFO] [1753463231.310954372] [vrpn_mocap.vrpn_mocap_client_node]: Creating sensor 0
+    ```
 
 3. The tracked object's pose information is publishing to your device through ROS topics.
 ```bash
  ros2 topic list
 ```
 ```
-/DemonstrationCopter/pose
-/DemonstrationCopter/pose_enu
-/DemonstrationCopter/pose_ned
+/vrpn_mocap/DemonstrationCopter/pose
 /parameter_events
 /rosout
 ```
-The topic `DemonstrationCopter_enu` publishes the pose in the ENU frame (East, North, Up), and the topic `DemonstrationCopter_ned` publishes the pose in the NED frame (North, East, Down).
+
+!!! tip
+    Use `ros2 topic hz /<topic_name>` in a new terminal to see the rate that the messages are coming in.
 
 ```bash
- ros2 topic echo /DemonstrationCopter_ned
+ ros2 topic echo /vrpn_mocap/DemonstrationCopter/pose
 ```
 ```
 header:
-  seq: 1810
   stamp:
-    secs: 1720634981
-    nsecs: 653036405
-  frame_id: "optitrack_ned"
+    sec: 1753467069
+    nanosec: 39448569
+  frame_id: world
 pose:
   position:
-    x: 0.557237863541
-    y: 3.70402407646
-    z: -1.14867293835
-  orientation: 
-    x: -0.0940773898464
-    y: -0.711429558216
-    z: 0.676397042416
-    w: 0.165845259493
+    x: 0.02851906791329384
+    y: 1.4423145055770874
+    z: -0.5593897700309753
+  orientation:
+    x: -0.0014903525589033961
+    y: -0.10285155475139618
+    z: -0.002313516102731228
+    w: -0.9946929216384888
 ---
 ```
 
