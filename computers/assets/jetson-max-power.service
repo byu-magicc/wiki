@@ -1,0 +1,14 @@
+# /etc/systemd/system/jetson-max-power.service
+
+[Unit]
+Description="Max out TX2 clocks & 802.11 power"
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/home/nvidia/software/jetson-max-power.sh
+
+[Install]
+WantedBy=default.target
