@@ -15,11 +15,6 @@ Note: **MAGICC Safety** is an individual __*and*__ a community responsibility.
 - Wear safety glasses anytime you are near flying UAVs
 - Check FAA restrictions before flying outdoors and always use a Part 107 certified safety pilot
 
-## UAV Safety ##
-
-- Never configure a flight controller with the ESCs powered on and with the propellers attached to the motors
-  - If you've plugging your flight controller into a computer, either make sure the ESCs do not have power or that the propellors have been removed
-  - We have had multiple incedents where motors turned on uncontrollably during what seemed like harmless configuration; don't assume what you're doing will be OK
 
 ## Battery Safety ##
 
@@ -54,6 +49,13 @@ fire in the vicinity.
 
 [**_Battery Basics_**]: hw_guides/lipo_batts.md
 [**_Battery Charging Guide_**]: hw_guides/charging_lipo_batts.md
+
+## Desk UAV Safety ##
+
+- Never configure a flight controller with the ESCs powered on and with the propellers attached to the motors
+  - If you've plugging your flight controller into a computer, either make sure the ESCs do not have power or that the propellers have been removed
+  - We have had multiple incidents where motors turned on uncontrollably during what seemed like harmless configuration; don't assume what you're doing will be OK
+- Don't run brushless motors without propellers for long periods of time, as this can cause the ESCs to overheat and potentially catch fire
 
 ## Build Room ##
 
