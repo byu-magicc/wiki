@@ -13,5 +13,3 @@ For instructions on editing the wiki, view the [source repository README](https:
 ## Links
 - [Main Website](https://magicc.byu.edu/)
 - [GitHub](https://github.com/byu-magicc)
-- [Write Brothers Scoreboard](https://keepthescore.com/board/ppwrmcdqpnywr)
-
